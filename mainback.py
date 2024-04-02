@@ -76,31 +76,12 @@ sciWritAI = Agent(
     llm=ollama_model
 )
 
-# # Create tasks for your agents
-# research_task = Task(
-#     description="""Identify the next big trend in {topic}.
-#          Focus on identifying pros and cons and the overall narrative.
-#          Your final report should clearly articulate the key points
-#          its market opportunities, and potential risks.""",
-#     expected_output="A comprehensive long article on the latest {topic}.",
-#     agent=infoSeeker
-# )
-#
-# write_task = Task(
-#     description="""Using the insights provided, develop an engaging blog
-#   post that highlights the most significant ev advancements.
-#   Your post should be informative yet accessible, catering to a tech-savvy audience.
-#   Make it sound cool, avoid complex words so it doesn't sound like AI.""",
-#     expected_output="Full blog post of at least 4 paragraphs",
-#     agent=sciWritAI
-# )
-
 research_task = Task(
     description=
-        """Identify the next big trend in {topic}.
-        Focus on identifying pros and cons and the overall narrative.
-        Your final report should clearly articulate the key points
-        its market opportunities, and potential risks.""",
+    """Identify the next big trend in {topic}.
+    Focus on identifying pros and cons and the overall narrative.
+    Your final report should clearly articulate the key points
+    its market opportunities, and potential risks.""",
     expected_output="A comprehensive long article on the latest {topic}.",
     # tools=[search_tool],
     agent=infoSeeker,
