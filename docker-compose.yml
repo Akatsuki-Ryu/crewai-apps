@@ -77,6 +77,8 @@ services:
       - OLLAMA_BASE_URL
     networks:
       - skynet
+    ports:
+      - "7681:7681"
 
 networks:
   proxy_default:
