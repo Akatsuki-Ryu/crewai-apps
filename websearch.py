@@ -13,7 +13,7 @@ from crewai_tools import SerperDevTool
 # os.environ["OPENAI_MODEL_NAME"] = 'openhermes'  # Adjust based on available model
 # os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
 
-os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
+# os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
 
 # search_tool = SerperDevTool()
 
