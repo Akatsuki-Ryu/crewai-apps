@@ -25,7 +25,11 @@ from crewai_tools import tool
 def search_tool(query: str):
     """Search tool using DuckDuckGo API."""
     print(f"===================================================Searching for: {query}")
-    return DuckDuckGoSearchRun(query=query, max_results=5, verbose=True)
+    searchobj = DuckDuckGoSearchRun()
+    # search_result = DuckDuckGoSearchRun(query=query, max_results=5, verbose=True)
+    search_result = searchobj.run(query)
+    print(f"=====Search Result: {search_result}")
+    return search_result
 
 
 # Define your agents with roles and goals
