@@ -7,10 +7,11 @@ from crewai_tools import SerperDevTool
 
 # You can choose to use a local model through Ollama for example. See https://docs.crewai.com/how-to/LLM-Connections/ for more information.
 
-# os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
-os.environ["OPENAI_API_BASE"] = 'http://llm:11434/v1'
-os.environ["OPENAI_MODEL_NAME"] = 'openhermes'  # Adjust based on available model
-os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
+# this is managed by main.py
+# # os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
+# os.environ["OPENAI_API_BASE"] = 'http://llm:11434/v1'
+# os.environ["OPENAI_MODEL_NAME"] = 'openhermes'  # Adjust based on available model
+# os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
 
 os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
 

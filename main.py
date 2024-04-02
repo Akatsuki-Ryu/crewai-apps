@@ -1,5 +1,41 @@
 import os
 
+
+
+
+# let user choose which model to run
+def choose_model():
+    print("Choose the model you would like to run:")
+    print("1. Openhermes (default)")
+    print("2. mistral")
+    choice = input("Enter the number of the model you would like to run: ")
+    if choice == "1":
+        # model_name = "openhermes"
+        os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
+    elif choice == "2":
+        # model_name = "mistral"
+        os.environ["OPENAI_MODEL_NAME"] = 'mistral'
+    else:
+        print("Invalid choice. will choose the default model openhermes.")
+        os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
+
+#let user choose if running from docker or running from local
+def choose_base_url():
+    print("Choose the base URL you would like to run:")
+    print("1. Docker")
+    print("2. Local (default)")
+    choice = input("Enter the number of the base URL you would like to run: ")
+    if choice == "1":
+        # base_url = "http://host.docker.internal:11434"
+        os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
+    elif choice == "2":
+        # base_url = "http://localhost:11434"
+        os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+    else:
+        print("Invalid choice. will choose to run local")
+        os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+
+
 #create a menu for user to choose which file to run
 def main():
     print("Welcome to the AI Crew!")
@@ -25,4 +61,6 @@ def main():
         main()
 
 if __name__ == "__main__":
+    choose_model()
+    choose_base_url()
     main()

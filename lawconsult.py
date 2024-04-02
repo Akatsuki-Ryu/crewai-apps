@@ -16,9 +16,10 @@ from crewai_tools import (
 search_tool = SerperDevTool()
 web_rag_tool = WebsiteSearchTool()
 
-model_name = os.getenv("OLLAMA_MODEL", "openhermes")
-# base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
-base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+# this is managed by the main.py
+# model_name = os.getenv("OLLAMA_MODEL", "openhermes")
+# # base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
+# base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
 # Initialize the Ollama model with the specified model and base URL
 ollama_model = Ollama(model=model_name, base_url=base_url)
