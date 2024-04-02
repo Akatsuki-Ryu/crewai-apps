@@ -31,4 +31,4 @@ COPY . ./
 
 #CMD ["python", "./main.py"]
 EXPOSE 7681
-CMD ["ttyd", "bash"]
+CMD ["ttyd", "-W", "bash"]
