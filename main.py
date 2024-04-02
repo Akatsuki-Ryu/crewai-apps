@@ -27,13 +27,13 @@ def choose_base_url():
     choice = input("Enter the number of the base URL you would like to run: ")
     if choice == "1":
         # base_url = "http://host.docker.internal:11434"
-        os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
+        os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434'
     elif choice == "2":
         # base_url = "http://localhost:11434"
-        os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+        os.environ["OPENAI_API_BASE"] = 'http://localhost:11434'
     else:
         print("Invalid choice. will choose to run local")
-        os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+        os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434'
 
 
 #create a menu for user to choose which file to run
