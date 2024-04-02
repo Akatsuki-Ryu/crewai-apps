@@ -17,14 +17,14 @@ search_tool = SerperDevTool()
 web_rag_tool = WebsiteSearchTool()
 
 # this is managed by the main.py
-model_name = os.getenv("OPENAI_MODEL_NAME")
+# model_name = os.getenv("OPENAI_MODEL_NAME")
 # base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
-base_url = os.getenv("OPENAI_API_BASE")
+# base_url = os.getenv("OPENAI_API_BASE")
 
 os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
 
 # Initialize the Ollama model with the specified model and base URL
-ollama_model = Ollama(model=model_name, base_url=base_url)
+# ollama_model = Ollama(model=model_name, base_url=base_url)
 
 ### OPENAI
 # os.environ["OPENAI_API_KEY"] = "Your Key"
@@ -40,7 +40,7 @@ infoSeeker = Agent(
     memory=True,
     allow_delegation=True,
     tools=[search_tool, web_rag_tool],
-    llm=ollama_model
+    # llm=ollama_model
 )
 legaleseBot = Agent(
     role="Legal Analyst Agent",
@@ -52,7 +52,7 @@ legaleseBot = Agent(
     memory=True,
     allow_delegation=False,
     tools=[search_tool, web_rag_tool],
-    llm=ollama_model
+    # llm=ollama_model
 )
 guardianAI = Agent(
     role="Ethics and Privacy Agent",
@@ -64,7 +64,7 @@ guardianAI = Agent(
     memory=True,
     allow_delegation=False,
     tools=[search_tool, web_rag_tool],
-    llm=ollama_model
+    # llm=ollama_model
 )
 sciWritAI = Agent(
     role="Content Generator Agent",
@@ -76,7 +76,7 @@ sciWritAI = Agent(
     memory=True,
     allow_delegation=False,
     tools=[search_tool, web_rag_tool],
-    llm=ollama_model
+    # llm=ollama_model
 )
 
 research_task = Task(
@@ -110,7 +110,7 @@ write_task = Task(
 crew = Crew(
     agents=[infoSeeker, legaleseBot, guardianAI, sciWritAI],
     tasks=[research_task, write_task],
-    llm=ollama_model,
+    # llm=ollama_model,
     verbose=2,
     # Crew verbose more will let you know what tasks are being worked on, you can set it to 1 or 2 to different logging levels
     process=Process.sequential
