@@ -13,5 +13,5 @@ access the instance from web browser at `http://localhost:7681`
 
 in the browser, run the script 
 ```bash 
-python main.py
+./run.sh
 ```
