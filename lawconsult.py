@@ -17,9 +17,9 @@ search_tool = SerperDevTool()
 web_rag_tool = WebsiteSearchTool()
 
 # this is managed by the main.py
-# model_name = os.getenv("OLLAMA_MODEL", "openhermes")
-# # base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
-# base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+model_name = os.getenv("OPENAI_MODEL_NAME")
+# base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
+base_url = os.getenv("OPENAI_API_BASE")
 
 # Initialize the Ollama model with the specified model and base URL
 ollama_model = Ollama(model=model_name, base_url=base_url)
