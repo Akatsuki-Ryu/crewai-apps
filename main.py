@@ -8,6 +8,7 @@ def choose_model():
     print("Choose the model you would like to run:")
     print("1. Openhermes (default)")
     print("2. mistral")
+    print("=====================================")
     choice = input("Enter the number of the model you would like to run: ")
     if choice == "1":
         # model_name = "openhermes"
@@ -23,8 +24,9 @@ def choose_model():
 # let user choose if running from docker or running from local
 def choose_base_url():
     print("Choose the base URL you would like to run:")
-    print("1. Docker")
-    print("2. Local (default)")
+    print("1. Local (default)")
+    print("2. Docker")
+    print("=====================================")
     choice = input("Enter the number of the base URL you would like to run: ")
     if choice == "1":
         # base_url = "http://host.docker.internal:11434/v1"
@@ -44,6 +46,7 @@ def main():
     print("2. Law Consultant")
     print("3. Research Assistant")
     print("4. Exit")
+    print("=====================================")
     choice = input("Enter the number of the file you would like to run: ")
     if choice == "1":
         print("Running Trip Planner...(this is not working)")
