@@ -17,7 +17,8 @@ search_tool = SerperDevTool()
 web_rag_tool = WebsiteSearchTool()
 
 model_name = os.getenv("OLLAMA_MODEL", "openhermes")
-base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
+# base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
+base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
 # Initialize the Ollama model with the specified model and base URL
 ollama_model = Ollama(model=model_name, base_url=base_url)
@@ -75,16 +76,34 @@ sciWritAI = Agent(
     llm=ollama_model
 )
 
+# # Create tasks for your agents
+# research_task = Task(
+#     description="""Identify the next big trend in {topic}.
+#          Focus on identifying pros and cons and the overall narrative.
+#          Your final report should clearly articulate the key points
+#          its market opportunities, and potential risks.""",
+#     expected_output="A comprehensive long article on the latest {topic}.",
+#     agent=infoSeeker
+# )
+#
+# write_task = Task(
+#     description="""Using the insights provided, develop an engaging blog
+#   post that highlights the most significant ev advancements.
+#   Your post should be informative yet accessible, catering to a tech-savvy audience.
+#   Make it sound cool, avoid complex words so it doesn't sound like AI.""",
+#     expected_output="Full blog post of at least 4 paragraphs",
+#     agent=sciWritAI
+# )
+
 research_task = Task(
-    description=(
-        "Identify the next big trend in {topic}."
-        "Focus on identifying pros and cons and the overall narrative."
-        "Your final report should clearly articulate the key points"
-        "its market opportunities, and potential risks."
-    ),
-    expected_output='A comprehensive long article on the latest {topic}.',
-    tools=[search_tool],
-    agent=[infoSeeker, legaleseBot, guardianAI]
+    description=
+        """Identify the next big trend in {topic}.
+        Focus on identifying pros and cons and the overall narrative.
+        Your final report should clearly articulate the key points
+        its market opportunities, and potential risks.""",
+    expected_output="A comprehensive long article on the latest {topic}.",
+    # tools=[search_tool],
+    agent=infoSeeker,
 )
 
 # Writing task with language model configuration
@@ -97,8 +116,8 @@ write_task = Task(
     # expected_output='A article on {topic} advancements formatted as markdown.',
     description="Synthesize information from other agents and create a coherent article on {topic}.",
     expected_output="A well-written scientific article about {topic}.",
-    tools=[search_tool],
-    agent=[infoSeeker, sciWritAI],
+    # tools=[search_tool],
+    agent=sciWritAI,
     async_execution=False,
     output_file='artcle.md'  # Example of output customization
 )
