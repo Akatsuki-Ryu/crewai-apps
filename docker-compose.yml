@@ -69,7 +69,6 @@ services:
     container_name: aigen_crewai
     restart: unless-stopped
     #    working_dir: /app
-    #command: python3 app.py
     #    command: tail -f /dev/null #keep it running
 #    network_mode: host
     environment:
