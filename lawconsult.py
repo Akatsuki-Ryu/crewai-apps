@@ -21,6 +21,8 @@ model_name = os.getenv("OPENAI_MODEL_NAME")
 # base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
 base_url = os.getenv("OPENAI_API_BASE")
 
+os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
+
 # Initialize the Ollama model with the specified model and base URL
 ollama_model = Ollama(model=model_name, base_url=base_url)
 

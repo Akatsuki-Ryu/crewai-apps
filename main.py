@@ -1,7 +1,7 @@
 import os
 
-
-
+os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
+os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
 
 # let user choose which model to run
 def choose_model():
@@ -19,7 +19,8 @@ def choose_model():
         print("Invalid choice. will choose the default model openhermes.")
         os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
 
-#let user choose if running from docker or running from local
+
+# let user choose if running from docker or running from local
 def choose_base_url():
     print("Choose the base URL you would like to run:")
     print("1. Docker")
@@ -36,7 +37,7 @@ def choose_base_url():
         os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434'
 
 
-#create a menu for user to choose which file to run
+# create a menu for user to choose which file to run
 def main():
     print("Welcome to the AI Crew!")
     print("1. Trip Planner")
@@ -59,6 +60,7 @@ def main():
     else:
         print("Invalid choice. Please try again.")
         main()
+
 
 if __name__ == "__main__":
     choose_model()
