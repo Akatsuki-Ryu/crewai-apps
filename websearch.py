@@ -13,22 +13,24 @@ from crewai_tools import SerperDevTool
 # os.environ["OPENAI_MODEL_NAME"] = 'openhermes'  # Adjust based on available model
 # os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
 
+# you can use the serper api , but in this code , we focus on the duckduckgo api
 # os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
-
 # search_tool = SerperDevTool()
+
 
 from langchain.tools import DuckDuckGoSearchRun
 from crewai_tools import tool
 
-
 @tool('duckduckgo')
 def search_tool(query: str):
     """Search tool using DuckDuckGo API."""
-    print(f"===================================================Searching for: {query}")
+    print("")
+    print(f"=====================================Searching for: {query}")
     searchobj = DuckDuckGoSearchRun()
     # search_result = DuckDuckGoSearchRun(query=query, max_results=5, verbose=True)
     search_result = searchobj.run(query)
-    print(f"=====Search Result: {search_result}")
+    print("=====================================")
+    print(f"Search Result: {search_result}")
     return search_result
 
 
@@ -41,7 +43,8 @@ researcher = Agent(
   You have a knack for dissecting complex data and presenting actionable insights.""",
     verbose=True,
     allow_delegation=False,
-    tools=[search_tool]
+    tools=[search_tool],
+    memory=True,
     # You can pass an optional llm attribute specifying what mode you wanna use.
     # It can be a local model through Ollama / LM Studio or a remote
     # model like OpenAI, Mistral, Antrophic or others (https://docs.crewai.com/how-to/LLM-Connections/)
@@ -76,7 +79,7 @@ task2 = Task(
   post that highlights the most significant ev advancements.
   Your post should be informative yet accessible, catering to a tech-savvy audience.
   Make it sound cool, avoid complex words so it doesn't sound like AI.""",
-    expected_output="Full blog post of at least 4 paragraphs",
+    expected_output="Full blog post of at least 4 paragraphs,approx 500 words.",
     agent=writer
 )
 
