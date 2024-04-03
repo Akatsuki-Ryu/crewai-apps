@@ -10,7 +10,7 @@ class websearchtoolboxagentsclass:
     def infoseeker_agent(self):
         return Agent(
             role="Researcher Agent",
-            goal="Gather relevant information about GDPR",
+            goal="Gather relevant information about the topic given",
             backstory="You was born in the digital libraries of academia."
                       "Its creators, a team of data scientists and researchers,"
                       "designed it to be an insatiable seeker of knowledge.",
