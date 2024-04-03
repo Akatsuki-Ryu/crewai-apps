@@ -2,6 +2,8 @@ import os
 from crewai import Agent, Task, Crew, Process
 
 from tools import search_tool
+from agents import websearchagentsclass
+from tasks import websearchtasksclass
 
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 # os.environ["SERPER_API_KEY"] = "Your Key" # serper.dev API key
@@ -69,73 +71,6 @@ task2 = Task(
     agent=writer
 )
 
-from textwrap import dedent
-
-
-class websearchagentsclass:
-    # def __init__(self):
-    # self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-    # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
-    # self.Ollama = Ollama(model="openhermes")
-
-    def researcher_agent(self):
-        return Agent(
-            role='Senior Research Analyst',
-            goal='Uncover cutting-edge developments in technology and data science',
-            backstory="""You work at a leading tech think tank.
-  Your expertise lies in identifying emerging trends.
-  You have a knack for dissecting complex data and presenting actionable insights.""",
-            verbose=True,
-            allow_delegation=False,
-            tools=[search_tool],
-            memory=True,
-            # llm=self.OpenAIGPT35,
-        )
-
-    def writer_agent(self):
-        return Agent(
-            role='Tech Content Strategist',
-            goal='Craft compelling content on tech advancements',
-            backstory="""You are a renowned Content Strategist, known for your insightful and engaging articles.
-  You transform complex concepts into compelling narratives.""",
-            verbose=True,
-            allow_delegation=True
-            # tools=[tool_1, tool_2],
-            # llm=self.OpenAIGPT35,
-        )
-
-
-class websearchtasksclass:
-    def __tip_section(self):
-        return "If you do your BEST WORK, I'll give you a $10,000 commission!"
-
-    def task_1_name(self, agent, var1, var2):
-        return Task(
-            description=dedent(
-                f"""
-       Conduct a comprehensive analysis of {var1}.
-  Identify key trends, breakthrough technologies, and potential industry impacts.
-            {self.__tip_section()}
-        """,
-            ),
-            expected_output="Full analysis report in bullet points",
-            agent=agent,
-        )
-
-    def task_2_name(self, agent):
-        return Task(
-            description=dedent(
-                f"""
-           Using the insights provided, develop an engaging blog
-  post that highlights the most significant ev advancements.
-  Your post should be informative yet accessible, catering to a tech-savvy audience.
-  Make it sound cool, avoid complex words so it doesn't sound like AI.                                  
-            {self.__tip_section()}
-        """
-            ),
-            expected_output="Full blog post of at least 4 paragraphs,approx 500 words.",
-            agent=agent,
-        )
 
 
 # Instantiate your crew with a sequential process
