@@ -1,5 +1,6 @@
 from crewai import Agent
-from crewai_tools import SerperDevTool, WebsiteSearchTool
+from tools import search_tool, web_rag_tool
+
 
 class websearchtoolboxagentsclass:
     # def __init__(self):
@@ -19,7 +20,6 @@ class websearchtoolboxagentsclass:
             tools=[search_tool, web_rag_tool],
             # llm=ollama_model
         )
-
 
     def legalesebot_agent(self):
         return Agent(
