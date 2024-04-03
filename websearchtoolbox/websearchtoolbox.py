@@ -48,18 +48,6 @@ class websearchcrewclass:
         return result
 
 
-# # Instantiate your crew with a sequential process - TWO AGENTS!
-# crew = Crew(
-#     agents=[infoSeeker, legaleseBot, guardianAI, sciWritAI],
-#     tasks=[research_task, write_task],
-#     # llm=ollama_model,
-#     verbose=2,
-#     # Crew verbose more will let you know what tasks are being worked on, you can set it to 1 or 2 to different logging levels
-#     process=Process.sequential
-#     # Sequential process will have tasks executed one after the other and the outcome of the previous one is passed as extra content into this next.
-#
-# )
-
 # Starting the task execution process with enhanced feedback
 # result = crew.kickoff(inputs={'topic': 'LGPD'})
 
