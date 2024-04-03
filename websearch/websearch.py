@@ -1,6 +1,7 @@
 import os
 from crewai import Agent, Task, Crew, Process
-from crewai_tools import SerperDevTool
+
+from tools import search_tool
 
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 # os.environ["SERPER_API_KEY"] = "Your Key" # serper.dev API key
@@ -17,22 +18,6 @@ from crewai_tools import SerperDevTool
 # os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
 # search_tool = SerperDevTool()
 
-
-from langchain.tools import DuckDuckGoSearchRun
-from crewai_tools import tool
-
-
-@tool('duckduckgo')
-def search_tool(query: str):
-    """Search tool using DuckDuckGo API."""
-    print("")
-    print(f"=====================================Searching for: {query}")
-    searchobj = DuckDuckGoSearchRun()
-    # search_result = DuckDuckGoSearchRun(query=query, max_results=5, verbose=True)
-    search_result = searchobj.run(query)
-    print("=====================================")
-    print(f"Search Result: {search_result}")
-    return search_result
 
 
 # Define your agents with roles and goals

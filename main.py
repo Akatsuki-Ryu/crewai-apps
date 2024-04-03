@@ -56,7 +56,7 @@ def main():
         os.system('python3 lawconsult.py')
     elif choice == "3":
         print("Running Research Assistant...")
-        os.system('python3 websearch.py')
+        os.system('python3 ./websearch/websearch.py')
     elif choice == "4":
         print("Exiting...")
         exit()
