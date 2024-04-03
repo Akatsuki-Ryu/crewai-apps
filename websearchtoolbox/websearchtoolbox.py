@@ -35,9 +35,8 @@ class websearchcrewclass:
         agent3 = agentsobj.guardian_agent()
         agent4 = agentsobj.sciWritAI_agent()
 
-
         task1 = tasksobj.task_1_name(agent1, self.var1)
-        task2 = tasksobj.task_2_name(agent2)
+        task2 = tasksobj.task_2_name(agent2, self.var1, self.var1)
 
         crew = Crew(
             agents=[agent1, agent2, agent3, agent4],
@@ -47,6 +46,7 @@ class websearchcrewclass:
         )
         result = crew.kickoff()
         return result
+
 
 # # Instantiate your crew with a sequential process - TWO AGENTS!
 # crew = Crew(
