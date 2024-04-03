@@ -5,6 +5,7 @@ from tools import search_tool
 from agents import websearchagentsclass
 from tasks import websearchtasksclass
 
+
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 # os.environ["SERPER_API_KEY"] = "Your Key" # serper.dev API key
 
@@ -21,70 +22,10 @@ from tasks import websearchtasksclass
 # search_tool = SerperDevTool()
 
 
-
-# Define your agents with roles and goals
-researcher = Agent(
-    role='Senior Research Analyst',
-    goal='Uncover cutting-edge developments in technology and data science',
-    backstory="""You work at a leading tech think tank.
-  Your expertise lies in identifying emerging trends.
-  You have a knack for dissecting complex data and presenting actionable insights.""",
-    verbose=True,
-    allow_delegation=False,
-    tools=[search_tool],
-    memory=True,
-    # You can pass an optional llm attribute specifying what mode you wanna use.
-    # It can be a local model through Ollama / LM Studio or a remote
-    # model like OpenAI, Mistral, Antrophic or others (https://docs.crewai.com/how-to/LLM-Connections/)
-    #
-    # import os
-    # os.environ['OPENAI_MODEL_NAME'] = 'gpt-3.5-turbo'
-    #
-    # OR
-    #
-    # from langchain_openai import ChatOpenAI
-    # llm=ChatOpenAI(model_name="gpt-3.5", temperature=0.7)
-)
-writer = Agent(
-    role='Tech Content Strategist',
-    goal='Craft compelling content on tech advancements',
-    backstory="""You are a renowned Content Strategist, known for your insightful and engaging articles.
-  You transform complex concepts into compelling narratives.""",
-    verbose=True,
-    allow_delegation=True
-)
-
-# Create tasks for your agents
-task1 = Task(
-    description="""Conduct a comprehensive analysis of {search_topic}.
-  Identify key trends, breakthrough technologies, and potential industry impacts.""",
-    expected_output="Full analysis report in bullet points",
-    agent=researcher
-)
-
-task2 = Task(
-    description="""Using the insights provided, develop an engaging blog
-  post that highlights the most significant ev advancements.
-  Your post should be informative yet accessible, catering to a tech-savvy audience.
-  Make it sound cool, avoid complex words so it doesn't sound like AI.""",
-    expected_output="Full blog post of at least 4 paragraphs,approx 500 words.",
-    agent=writer
-)
-
-
-
-# Instantiate your crew with a sequential process
-crew = Crew(
-    agents=[researcher, writer],
-    tasks=[task1, task2],
-    verbose=2,  # You can set it to 1 or 2 to different logging levels
-)
-
-
 class websearchcrew:
     def __init__(self, search_topic):
-        self.var1 = search_topic
-        self.var2 = search_topic
+        self.search_topic_local1 = search_topic
+        self.search_topic_local2 = search_topic
 
     def run(self):
         # Define your custom agents and tasks here
@@ -92,25 +33,26 @@ class websearchcrew:
         tasks = websearchtasksclass()
 
         # Define your custom agents and tasks here
-        custom_agent_1 = agents.researcher_agent()
-        custom_agent_2 = agents.writer_agent()
+        reseacher_agent_local = agents.researcher_agent()
+        writeer_agent_local = agents.writer_agent()
 
         # Custom tasks include agent name and variables as input
-        custom_task_1 = tasks.task_1_name(
-            custom_agent_1,
-            self.var1,
-            self.var2,
+        task1_local = tasks.task_1_name(
+            reseacher_agent_local,
+            self.search_topic_local1,
+            self.search_topic_local2,
         )
 
-        custom_task_2 = tasks.task_2_name(
-            custom_agent_2,
+        task2_local = tasks.task_2_name(
+            writeer_agent_local
         )
 
         # Define your custom crew here
         crew = Crew(
-            agents=[custom_agent_1, custom_agent_2],
-            tasks=[custom_task_1, custom_task_2],
+            agents=[reseacher_agent_local, writeer_agent_local],
+            tasks=[task1_local, task2_local],
             verbose=True,
+            # verbose=2,  # You can set it to 1 or 2 to different logging levels
         )
 
         result = crew.kickoff()

@@ -20,6 +20,17 @@ class websearchagentsclass:
             tools=[search_tool],
             memory=True,
             # llm=self.OpenAIGPT35,
+            # You can pass an optional llm attribute specifying what mode you wanna use.
+            # It can be a local model through Ollama / LM Studio or a remote
+            # model like OpenAI, Mistral, Antrophic or others (https://docs.crewai.com/how-to/LLM-Connections/)
+            #
+            # import os
+            # os.environ['OPENAI_MODEL_NAME'] = 'gpt-3.5-turbo'
+            #
+            # OR
+            #
+            # from langchain_openai import ChatOpenAI
+            # llm=ChatOpenAI(model_name="gpt-3.5", temperature=0.7)
         )
 
     def writer_agent(self):
