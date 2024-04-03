@@ -53,7 +53,7 @@ def main():
         os.system('python3 trip_planner.py')
     elif choice == "2":
         print("Running Law Consultant...")
-        os.system('python3 lawconsult.py')
+        os.system('python3 ./websearchtoolbox/websearchtoolbox.py')
     elif choice == "3":
         print("Running Research Assistant...")
         os.system('python3 ./websearch/websearch.py')
