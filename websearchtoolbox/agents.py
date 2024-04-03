@@ -24,7 +24,7 @@ class websearchtoolboxagentsclass:
     def legalesebot_agent(self):
         return Agent(
             role="Legal Analyst Agent",
-            goal="Interpret GDPR regulations and legal implications",
+            goal="Interpret regulations and legal implications about the topic given",
             backstory="You emerged from the depths of legal archives."
                       "Its neural circuits were meticulously trained on centuries of jurisprudence."
                       "Its purpose: to decipher complex regulations and translate them into plain language.",
