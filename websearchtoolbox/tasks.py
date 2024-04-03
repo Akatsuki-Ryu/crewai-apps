@@ -21,7 +21,7 @@ class websearchtoolboxtasksclass:
             # tools=[search_tool],
         )
 
-    def task_2_name(self, agent, var1, var2):
+    def task_2_name(self, agent, var1):
         return Task(
             description=dedent(
                 f"""Synthesize information from other agents and create a coherent article on {var1}.
