@@ -21,6 +21,7 @@ from crewai_tools import SerperDevTool
 from langchain.tools import DuckDuckGoSearchRun
 from crewai_tools import tool
 
+
 @tool('duckduckgo')
 def search_tool(query: str):
     """Search tool using DuckDuckGo API."""
@@ -68,7 +69,7 @@ writer = Agent(
 
 # Create tasks for your agents
 task1 = Task(
-    description="""Conduct a comprehensive analysis of the new ev xiaomi has released in 2024.
+    description="""Conduct a comprehensive analysis of {search_topic}.
   Identify key trends, breakthrough technologies, and potential industry impacts.""",
     expected_output="Full analysis report in bullet points",
     agent=researcher
@@ -83,6 +84,75 @@ task2 = Task(
     agent=writer
 )
 
+from textwrap import dedent
+
+
+class websearchagentsclass:
+    # def __init__(self):
+    # self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+    # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
+    # self.Ollama = Ollama(model="openhermes")
+
+    def researcher_agent(self):
+        return Agent(
+            role='Senior Research Analyst',
+            goal='Uncover cutting-edge developments in technology and data science',
+            backstory="""You work at a leading tech think tank.
+  Your expertise lies in identifying emerging trends.
+  You have a knack for dissecting complex data and presenting actionable insights.""",
+            verbose=True,
+            allow_delegation=False,
+            tools=[search_tool],
+            memory=True,
+            # llm=self.OpenAIGPT35,
+        )
+
+    def writer_agent(self):
+        return Agent(
+            role='Tech Content Strategist',
+            goal='Craft compelling content on tech advancements',
+            backstory="""You are a renowned Content Strategist, known for your insightful and engaging articles.
+  You transform complex concepts into compelling narratives.""",
+            verbose=True,
+            allow_delegation=True
+            # tools=[tool_1, tool_2],
+            # llm=self.OpenAIGPT35,
+        )
+
+
+class websearchtasksclass:
+    def __tip_section(self):
+        return "If you do your BEST WORK, I'll give you a $10,000 commission!"
+
+    def task_1_name(self, agent, var1, var2):
+        return Task(
+            description=dedent(
+                f"""
+       Conduct a comprehensive analysis of {var1}.
+  Identify key trends, breakthrough technologies, and potential industry impacts.
+            {self.__tip_section()}
+        """,
+            ),
+            expected_output="Full analysis report in bullet points",
+            agent=agent,
+        )
+
+    def task_2_name(self, agent):
+        return Task(
+            description=dedent(
+                f"""
+           Using the insights provided, develop an engaging blog
+  post that highlights the most significant ev advancements.
+  Your post should be informative yet accessible, catering to a tech-savvy audience.
+  Make it sound cool, avoid complex words so it doesn't sound like AI.                                  
+            {self.__tip_section()}
+        """
+            ),
+            expected_output="Full blog post of at least 4 paragraphs,approx 500 words.",
+            agent=agent,
+        )
+
+
 # Instantiate your crew with a sequential process
 crew = Crew(
     agents=[researcher, writer],
@@ -90,8 +160,53 @@ crew = Crew(
     verbose=2,  # You can set it to 1 or 2 to different logging levels
 )
 
-# Get your crew to work!
-result = crew.kickoff()
 
-print("######################")
-print(result)
+class websearchcrew:
+    def __init__(self, search_topic):
+        self.var1 = search_topic
+        self.var2 = search_topic
+
+    def run(self):
+        # Define your custom agents and tasks here
+        agents = websearchagentsclass()
+        tasks = websearchtasksclass()
+
+        # Define your custom agents and tasks here
+        custom_agent_1 = agents.researcher_agent()
+        custom_agent_2 = agents.writer_agent()
+
+        # Custom tasks include agent name and variables as input
+        custom_task_1 = tasks.task_1_name(
+            custom_agent_1,
+            self.var1,
+            self.var2,
+        )
+
+        custom_task_2 = tasks.task_2_name(
+            custom_agent_2,
+        )
+
+        # Define your custom crew here
+        crew = Crew(
+            agents=[custom_agent_1, custom_agent_2],
+            tasks=[custom_task_1, custom_task_2],
+            verbose=True,
+        )
+
+        result = crew.kickoff()
+        return result
+
+
+if __name__ == "__main__":
+    print("## websearch Crew")
+    print('-------------------------------')
+    # user input a task definition
+    search_topic = input("Enter the search topic: ")
+
+    # define a crew object
+    crewobj = websearchcrew(search_topic)
+    # Get your crew to work!
+    result = crewobj.run()
+
+    print("###################### result ######################")
+    print(result)
