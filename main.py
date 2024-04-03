@@ -45,7 +45,8 @@ def main():
     print("1. Trip Planner")
     print("2. Law Consultant")
     print("3. Research Assistant")
-    print("4. Exit")
+    print("4. File Operations")
+    print("e. Exit")
     print("=====================================")
     choice = input("Enter the number of the file you would like to run: ")
     if choice == "1":
@@ -58,6 +59,9 @@ def main():
         print("Running Research Assistant...")
         os.system('python3 ./websearch/websearch.py')
     elif choice == "4":
+        print("Running File Operations...")
+        os.system('python3 ./fileopts/fileopts.py')
+    elif choice == "e":
         print("Exiting...")
         exit()
     else:

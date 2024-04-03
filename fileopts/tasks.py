@@ -10,10 +10,10 @@ class fileopts_tasks_class:
         return Task(
             description=dedent(
                 f"""read out the file from local disk {var1}.
-                summeray the content of the file. and also give a possible comment on the file.
+                summary the content of the file. and write one sentence of comment. 
         {self.__tip_section()}""",
             ),
-            expected_output=f"A comprehensive long article on the file given.",
+            expected_output=f"A brief summary on the file given.",
             agent=agent,  # infoSeeker_agent,
             # tools=[search_tool],
             output_file='fileops-summary.md'  # Example of output customization
