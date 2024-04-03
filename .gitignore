@@ -1,3 +1,4 @@
 .env
 
 *.pyc
+/db/chroma.sqlite3
