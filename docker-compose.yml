@@ -79,10 +79,21 @@ services:
     ports:
       - "7681:7681"
 
+  browserless_chromium:
+    image: ghcr.io/browserless/chromium
+    ports:
+      - "3000:3000"
+#    command: docker run -p 3000:3000 ghcr.io/browserless/chromium
+    networks:
+      - skynet
+
+
+
 networks:
   proxy_default:
     external: true
   skynet:
+
 
 #volumes:
 #  model:
