@@ -42,6 +42,6 @@ class SearchTools():
                 next
 
         content = '\n'.join(stirng)
-        print("=================================================query")
+        print("\n=================== query ====================")
         print(query)
         return f"\nSearch result: {content}\n"

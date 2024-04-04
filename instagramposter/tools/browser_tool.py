@@ -20,7 +20,7 @@ class BrowserTools():
         # url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
         # serviceurl = f"http://localhost:3000/content" # running browserless locally
         serviceurl = f"http://browserless_chromium:3000/content" # running browserless through docker network
-        print("===================target website ====================")
+        print("\n===================target website ====================")
         print(websiteurl)
         payload = json.dumps({"url": websiteurl})
         headers = {'cache-control': 'no-cache', 'content-type': 'application/json'}
@@ -28,7 +28,7 @@ class BrowserTools():
         elements = partition_html(text=response.text)
         content = "\n\n".join([str(el) for el in elements])
         content = [content[i:i + 8000] for i in range(0, len(content), 8000)]
-        print("===================scrapted content =====================")
+        print("\n===================scrapted content =====================")
         print(content)
         summaries = []
         for chunk in content:
