@@ -6,8 +6,8 @@ class MarketingAnalysisTasks:
     def product_analysis(self, agent, product_website, product_details):
         return Task(
             description=dedent(
-                f"""Analyze the given product website: {product_website}.
-                Extra details provided by the customer: {product_details}.
+                f"""Analyze the given product website: {product_website}
+                Extra details provided by the customer: {product_details}
     
                 Focus on identifying unique features, benefits,
                 and the overall narrative presented.
@@ -26,8 +26,8 @@ class MarketingAnalysisTasks:
     def competitor_analysis(self, agent, product_website, product_details):
         return Task(
             description=dedent(
-                f"""Explore competitor of: {product_website}.
-                Extra details provided by the customer: {product_details}.
+                f"""Explore competitor of: {product_website}
+                Extra details provided by the customer: {product_details}
     
                 Identify the top 3 competitors and analyze their
                 strategies, market positioning, and customer perception.
@@ -42,8 +42,8 @@ class MarketingAnalysisTasks:
     def campaign_development(self, agent, product_website, product_details):
         return Task(
             description=dedent(
-                f"""You're creating a targeted marketing campaign for: {product_website}.
-                Extra details provided by the customer: {product_details}.
+                f"""You're creating a targeted marketing campaign for: {product_website}
+                Extra details provided by the customer: {product_details}
     
                 To start this campaing we will need a strategy and creative content ideas.
                 It should be meticulously designed to captivate and engage
