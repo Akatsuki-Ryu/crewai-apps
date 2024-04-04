@@ -70,10 +70,10 @@ services:
     restart: unless-stopped
     #    working_dir: /app
     #    command: tail -f /dev/null #keep it running
-#    network_mode: host
-    environment:
-      - OLLAMA_MODEL
-      - OLLAMA_BASE_URL
+    #    network_mode: host
+    #    environment:
+    #      - OLLAMA_MODEL
+    #      - OLLAMA_BASE_URL
     networks:
       - skynet
     ports:
@@ -83,7 +83,14 @@ services:
     image: ghcr.io/browserless/chromium
     ports:
       - "3000:3000"
-#    command: docker run -p 3000:3000 ghcr.io/browserless/chromium
+    #    command: docker run -p 3000:3000 ghcr.io/browserless/chromium
+    environment:
+      - DEBUG=browserless:*
+      - MAX_CONCURRENT_SESSIONS=20
+      - MAX_QUEUE_LENGTH=10
+      - PREBOOT_CHROME=true
+      - CHROMIUM_PATH=/usr/bin/chromium-browser
+      - CHROMIUM_ARGS=--no-sandbox,--disable-setuid-sandbox,--disable-dev-shm-usage
     networks:
       - skynet
 
