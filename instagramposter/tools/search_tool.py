@@ -4,6 +4,8 @@ import os
 import requests
 from langchain.tools import tool
 
+from langchain.tools import DuckDuckGoSearchRun
+
 
 class SearchTools():
 
@@ -42,6 +44,20 @@ class SearchTools():
                 next
 
         content = '\n'.join(stirng)
-        print("\n=================== query ====================")
+        print("\n=================== serper query ====================")
         print(query)
         return f"\nSearch result: {content}\n"
+
+    from crewai_tools import SerperDevTool
+
+    @tool('duckduckgo')
+    def duck_search_tool(query):
+        """Search tool using DuckDuckGo API."""
+        print("")
+        print(f"\n==================== duck Searching for: {query} =====================")
+        searchobj = DuckDuckGoSearchRun()
+        # search_result = DuckDuckGoSearchRun(query=query, max_results=5, verbose=True)
+        search_result = searchobj.run(query)
+        print("\n=====================================")
+        print(f"Search Result: {search_result}")
+        return search_result
