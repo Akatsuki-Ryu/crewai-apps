@@ -24,7 +24,7 @@ class copy_crew:
         # product_details = input("Any extra details about the product and or the instagram post you want?\n")
 
         # Create Agents
-        product_competitor_agent = agentsobj.product_competitor_agent()
+        product_competitor_agent = agentsobj.product_competitor_agent(product_website)
         strategy_planner_agent = agentsobj.strategy_planner_agent()
         creative_agent = agentsobj.creative_content_creator_agent()
         # Create Tasks
