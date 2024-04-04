@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03441b7-ec34-4f4b-bb0a-0cde984496cb" name="Changes" comment="">
+    <list default="true" id="f03441b7-ec34-4f4b-bb0a-0cde984496cb" name="Changes" comment="opt">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websearchtoolbox/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/websearchtoolbox/tasks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +26,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2eadiuPXpo60U5dbdAvcPGFRwQy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,8 +37,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.docker-compose.yml.llm: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -54,8 +57,43 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/instagramposter/tools" />
+      <recent name="$PROJECT_DIR$/instagramposter" />
       <recent name="$PROJECT_DIR$/websearchtoolbox" />
     </key>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.llm: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="llm" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.llm: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -67,9 +105,165 @@
       <updated>1712146752910</updated>
       <workItem from="1712146754021" duration="8367000" />
     </task>
+    <task id="LOCAL-00001" summary="add instagram poster">
+      <option name="closed" value="true" />
+      <created>1712253792901</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712253792901</updated>
+    </task>
+    <task id="LOCAL-00002" summary="opt code , clean up llm settings">
+      <option name="closed" value="true" />
+      <created>1712254673159</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712254673159</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add browseless in docker composer">
+      <option name="closed" value="true" />
+      <created>1712254691171</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712254691171</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add dependencies in docker for instagram poster crew">
+      <option name="closed" value="true" />
+      <created>1712254711802</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712254711803</updated>
+    </task>
+    <task id="LOCAL-00005" summary="reformat tasks.py">
+      <option name="closed" value="true" />
+      <created>1712258420940</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712258420940</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add script for build env in docker">
+      <option name="closed" value="true" />
+      <created>1712258467176</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712258467176</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix docker network issue">
+      <option name="closed" value="true" />
+      <created>1712258482722</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712258482722</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add setupenv script ( not in use at the moment )">
+      <option name="closed" value="true" />
+      <created>1712258503922</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712258503922</updated>
+    </task>
+    <task id="LOCAL-00009" summary="format opt">
+      <option name="closed" value="true" />
+      <created>1712259933018</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712259933018</updated>
+    </task>
+    <task id="LOCAL-00010" summary="pass down the website url as a paramater">
+      <option name="closed" value="true" />
+      <created>1712259960425</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712259960425</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update requirements file to make sure env is same">
+      <option name="closed" value="true" />
+      <created>1712266464595</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712266464595</updated>
+    </task>
+    <task id="LOCAL-00012" summary="reroute parameters">
+      <option name="closed" value="true" />
+      <created>1712267251796</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712267251796</updated>
+    </task>
+    <task id="LOCAL-00013" summary="increase browser capacity">
+      <option name="closed" value="true" />
+      <created>1712267271344</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712267271344</updated>
+    </task>
+    <task id="LOCAL-00014" summary="show debug info and prompt engineering">
+      <option name="closed" value="true" />
+      <created>1712267284845</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712267284845</updated>
+    </task>
+    <task id="LOCAL-00015" summary="opt">
+      <option name="closed" value="true" />
+      <created>1712267354948</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1712267354948</updated>
+    </task>
+    <task id="LOCAL-00016" summary="debug info opt">
+      <option name="closed" value="true" />
+      <created>1712267692835</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1712267692835</updated>
+    </task>
+    <task id="LOCAL-00017" summary="opt">
+      <option name="closed" value="true" />
+      <created>1712267768332</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1712267768332</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add instagram poster" />
+    <MESSAGE value="opt code , clean up llm settings" />
+    <MESSAGE value="add browseless in docker composer" />
+    <MESSAGE value="add dependencies in docker for instagram poster crew" />
+    <MESSAGE value="reformat tasks.py" />
+    <MESSAGE value="add script for build env in docker" />
+    <MESSAGE value="fix docker network issue" />
+    <MESSAGE value="add setupenv script ( not in use at the moment )" />
+    <MESSAGE value="format opt" />
+    <MESSAGE value="pass down the website url as a paramater" />
+    <MESSAGE value="update requirements file to make sure env is same" />
+    <MESSAGE value="reroute parameters" />
+    <MESSAGE value="increase browser capacity" />
+    <MESSAGE value="show debug info and prompt engineering" />
+    <MESSAGE value="debug info opt" />
+    <MESSAGE value="opt" />
+    <option name="LAST_COMMIT_MESSAGE" value="opt" />
   </component>
 </project>
