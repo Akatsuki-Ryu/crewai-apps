@@ -1,5 +1,4 @@
 import json
-import os
 
 import requests
 from crewai import Agent, Task
@@ -9,7 +8,6 @@ from unstructured.partition.html import partition_html
 
 from crewai_tools import ScrapeWebsiteTool
 
-from langchain.llms import Ollama
 
 class BrowserTools():
 
