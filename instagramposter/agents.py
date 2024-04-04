@@ -1,22 +1,16 @@
 import os
 from textwrap import dedent
 from crewai import Agent
-# from instagramposter.tools.browser_tool import BrowserTools
-# from instagramposter.tools.search_tool import SearchTools
 
 from langchain.llms import Ollama
 
 from tools.browser_tool import BrowserTools
 from tools.search_tool import SearchTools
 
-os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
-os.environ["OPENAI_MODEL_NAME"] = 'crewai-mistral'  # Adjust based on available model
-os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
-
 
 class MarketingAnalysisAgents:
-    def __init__(self):
-        self.llm = Ollama(model="crewai-mistral")
+    # def __init__(self):
+        # self.llm = Ollama(model="crewai-mistral")
 
     def product_competitor_agent(self):
         return Agent(
@@ -34,7 +28,7 @@ class MarketingAnalysisAgents:
                 SearchTools.search_internet
             ],
             allow_delegation=False,
-            llm=self.llm,
+            # llm=self.llm,
             verbose=True
         )
 
@@ -53,7 +47,7 @@ class MarketingAnalysisAgents:
                 SearchTools.search_internet,
                 SearchTools.search_instagram
             ],
-            llm=self.llm,
+            # llm=self.llm,
             verbose=True
         )
 
@@ -76,7 +70,7 @@ class MarketingAnalysisAgents:
                 SearchTools.search_internet,
                 SearchTools.search_instagram
             ],
-            llm=self.llm,
+            # llm=self.llm,
             verbose=True
         )
 
@@ -96,7 +90,7 @@ class MarketingAnalysisAgents:
                 SearchTools.search_internet,
                 SearchTools.search_instagram
             ],
-            llm=self.llm,
+            # llm=self.llm,
             allow_delegation=False,
             verbose=True
         )
@@ -119,6 +113,6 @@ class MarketingAnalysisAgents:
                 SearchTools.search_internet,
                 SearchTools.search_instagram
             ],
-            llm=self.llm,
+            # llm=self.llm,
             verbose=True
         )
