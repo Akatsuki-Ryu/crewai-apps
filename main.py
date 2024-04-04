@@ -46,6 +46,7 @@ def main():
     print("2. Law Consultant")
     print("3. Research Assistant")
     print("4. File Operations")
+    print("5. Instagram Poster")
     print("e. Exit")
     print("=====================================")
     choice = input("Enter the number of the file you would like to run: ")
@@ -61,6 +62,9 @@ def main():
     elif choice == "4":
         print("Running File Operations...")
         os.system('python3 ./fileopts/fileopts.py')
+    elif choice == "5":
+        print("Running Instagram Poster...")
+        os.system('python3 ./instagramposter/instagrampostermain.py')
     elif choice == "e":
         print("Exiting...")
         exit()
