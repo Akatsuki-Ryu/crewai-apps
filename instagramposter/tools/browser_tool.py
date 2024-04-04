@@ -18,8 +18,8 @@ class BrowserTools():
         """Useful to scrape and summarize a website content, just pass a string with
         only the full url, no need for a final slash `/`, eg: https://google.com or https://clearbit.com/about-us"""
         # url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
-        # serviceurl = f"http://localhost:3000/content"
-        serviceurl = f"http://browserless_chromium:3000/content" # docker network
+        # serviceurl = f"http://localhost:3000/content" # running browserless locally
+        serviceurl = f"http://browserless_chromium:3000/content" # running browserless through docker network
         print("===================target website ====================")
         print(websiteurl)
         payload = json.dumps({"url": websiteurl})
