@@ -8,7 +8,6 @@ from crewai import Agent, Crew
 from tasks import MarketingAnalysisTasks
 from agents import MarketingAnalysisAgents
 
-from tools.parameters import product_website_global, product_details_global
 
 
 class copy_crew:
