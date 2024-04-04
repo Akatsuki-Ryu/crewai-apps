@@ -8,6 +8,8 @@ from crewai import Agent, Crew
 from tasks import MarketingAnalysisTasks
 from agents import MarketingAnalysisAgents
 
+from tools.parameters import product_website_global, product_details_global
+
 
 class copy_crew:
     # def __init__(self):
@@ -24,7 +26,7 @@ class copy_crew:
         # product_details = input("Any extra details about the product and or the instagram post you want?\n")
 
         # Create Agents
-        product_competitor_agent = agentsobj.product_competitor_agent(product_website)
+        product_competitor_agent = agentsobj.product_competitor_agent()
         strategy_planner_agent = agentsobj.strategy_planner_agent()
         creative_agent = agentsobj.creative_content_creator_agent()
         # Create Tasks
@@ -91,6 +93,9 @@ if __name__ == "__main__":
 
     product_website = input("What is the product website you want a marketing strategy for?\n")
     product_details = input("Any extra details about the product and or the instagram post you want?\n")
+
+    product_details_global = product_details
+    product_website_global = product_website
 
     copy_crewobj = copy_crew()
     ad_copy = copy_crewobj.run(product_website, product_details)

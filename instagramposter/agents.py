@@ -12,7 +12,7 @@ class MarketingAnalysisAgents:
     # def __init__(self):
         # self.llm = Ollama(model="crewai-mistral")
 
-    def product_competitor_agent(self, product_website):
+    def product_competitor_agent(self):
         return Agent(
             role="Lead Market Analyst",
             goal=dedent("""Conduct amazing analysis of the products and
@@ -22,7 +22,7 @@ class MarketingAnalysisAgents:
                     digital marketing firm, you specialize in dissecting
                     online business landscapes."""),
             tools=[
-                BrowserTools.scrape_and_summarize_website(product_website),
+                BrowserTools.scrape_and_summarize_website,
                 SearchTools.search_internet
             ],
             allow_delegation=False,
