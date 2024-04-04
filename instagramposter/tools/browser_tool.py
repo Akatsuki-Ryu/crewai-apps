@@ -14,15 +14,15 @@ from langchain.llms import Ollama
 class BrowserTools():
 
     @tool("Scrape website content")
-    def scrape_and_summarize_website(website):
+    def scrape_and_summarize_website(websiteurl):
         """Useful to scrape and summarize a website content, just pass a string with
         only the full url, no need for a final slash `/`, eg: https://google.com or https://clearbit.com/about-us"""
         # url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
         # serviceurl = f"http://localhost:3000/content"
         serviceurl = f"http://browserless_chromium:3000/content" # docker network
-        print("=================================================website")
-        print(website)
-        payload = json.dumps({"url": website})
+        print("===================target website ====================")
+        print(websiteurl)
+        payload = json.dumps({"url": websiteurl})
         headers = {'cache-control': 'no-cache', 'content-type': 'application/json'}
         response = requests.request("POST", serviceurl, headers=headers, data=payload)
         elements = partition_html(text=response.text)
