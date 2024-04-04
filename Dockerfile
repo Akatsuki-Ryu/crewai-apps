@@ -16,16 +16,26 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | b
     && nvm install node \
     && nvm use node
 
+    # install poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH="/root/.local/bin:${PATH}"
+
 WORKDIR /app
 
 COPY requirements.txt ./
 
 RUN pip install -r requirements.txt
 
+COPY poetry.lock pyproject.toml ./
+
+RUN poetry install --no-root
+
 # Keep the container running
 #CMD ["tail", "-f", "/dev/null"]
 
 COPY . ./
+
+#RUN ./setupenv.sh
 
 #docker build -t crewai .
 
