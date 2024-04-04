@@ -24,8 +24,9 @@ def choose_model():
 # let user choose if running from docker or running from local
 def choose_base_url():
     print("Choose the base URL you would like to run:")
-    print("1. Local (default)")
-    print("2. Docker")
+    print("1. docker host (default)")
+    print("2. baremetal localhost")
+    print("3. docker network")
     print("=====================================")
     choice = input("Enter the number of the base URL you would like to run: ")
     if choice == "1":
@@ -34,6 +35,9 @@ def choose_base_url():
     elif choice == "2":
         # base_url = "http://localhost:11434/v1"
         os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+    elif choice == "3":
+        # base_url = "http://llm:11434/v1"
+        os.environ["OPENAI_API_BASE"] = 'http://llm:11434/v1'
     else:
         print("Invalid choice. will choose to run local")
         os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
