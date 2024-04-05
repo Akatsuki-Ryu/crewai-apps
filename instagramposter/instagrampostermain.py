@@ -90,12 +90,13 @@ class QualityAssuranceCrew:
         self.tasks = quality_assurance_tasks_class()
         self.agents = QualityControlAgentsClass()
 
-    def run(self, task_request, task_output):
+    def run(self, product_website, product_details, task_output):
         # Create Agent
         quality_control_agent = self.agents.quality_control_agent()
 
         # Create Task
-        quality_assurance_task = self.tasks.quality_assurance(quality_control_agent, task_request, task_output)
+        quality_assurance_task = self.tasks.quality_assurance(quality_control_agent, product_website, product_details,
+                                                              task_output)
 
         # Create Crew responsible for Quality Assurance
         quality_assurance_crew = Crew(
@@ -116,20 +117,17 @@ if __name__ == "__main__":
     product_website = input("What is the product website you want a marketing strategy for?\n")
     product_details = input("Any extra details about the product and or the instagram post you want?\n")
 
-    product_details_global = product_details
-    product_website_global = product_website
-
     copy_crewobj = copy_crew()
     ad_copy = copy_crewobj.run(product_website, product_details)
 
     qualityassuranceobj_ad_copy = QualityAssuranceCrew()
-    qualityassurance_ad_copy = qualityassuranceobj_ad_copy.run(product_details, ad_copy)
+    qualityassurance_ad_copy = qualityassuranceobj_ad_copy.run(product_website, product_details, ad_copy)
 
     image_crewobj = image_crew()
     image = image_crewobj.run(ad_copy, product_website, product_details)
 
     qualityassuranceobj_image = QualityAssuranceCrew()
-    qualityassurance_image = qualityassuranceobj_image.run(product_details, image)
+    qualityassurance_image = qualityassuranceobj_image.run(product_website, product_details, image)
 
     # Print results
     print("\n\n########################")
