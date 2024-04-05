@@ -43,14 +43,20 @@ def choose_model():
         print(f"{i + 1}. {model}")
     print("=====================================")
     choice = input("Enter the number of the model you would like to run: ")
-    if int(choice) in range(1, len(model_list) + 1):
+    if choice == "":
+        print("No choice made. will choose the default model openhermes.")
+        os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
+        return 0
+    if int(choice) in range(1, len(model_list) + 1) and choice != "":
         # only pass through the part before ":"
         selected_model = model_list[int(choice) - 1].split(":")[0]
         os.environ["OPENAI_MODEL_NAME"] = selected_model
         print(f"Running model: {selected_model}")
+        return 0
     else:
         print("Invalid choice. will choose the default model openhermes.")
         os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
+        return 0
 
 
 # let user choose which model to run
