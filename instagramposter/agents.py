@@ -119,3 +119,28 @@ class MarketingAnalysisAgents:
             # llm=self.llm,
             verbose=True
         )
+
+
+class QualityControlAgentsClass:
+    # def __init__(self):
+    # self.llm = Ollama(model="crewai-mistral") # can use other models
+
+    def quality_control_agent(self):
+
+        return Agent(
+            role="Quality Control Specialist",
+            goal=dedent("""Review the work done by other agents, ensure it meets quality standards,
+                provide feedback and corrections if necessary."""),
+            backstory=dedent("""As a Quality Control Specialist at a leading digital marketing agency,
+                your role is to ensure that all work produced by the team meets the highest quality standards.
+                You have a keen eye for detail and a deep understanding of your agency's quality expectations."""),
+            tools=[
+                BrowserTools.scrape_and_summarize_website,
+                BrowserTools.scrape_website_beautifulsoup,
+                SearchTools.search_internet,
+                SearchTools.search_instagram,
+                SearchTools.duck_search_tool
+            ],
+            # llm=self.llm,
+            verbose=True
+        )

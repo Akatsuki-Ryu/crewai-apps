@@ -5,9 +5,8 @@ load_dotenv()
 from textwrap import dedent
 from crewai import Agent, Crew
 
-from tasks import MarketingAnalysisTasks
-from agents import MarketingAnalysisAgents
-
+from tasks import MarketingAnalysisTasks, quality_assurance_tasks_class
+from agents import MarketingAnalysisAgents, QualityControlAgentsClass
 
 
 class copy_crew:
@@ -86,6 +85,31 @@ class image_crew:
         return image
 
 
+class QualityAssuranceCrew:
+    def __init__(self):
+        self.tasks = quality_assurance_tasks_class()
+        self.agents = QualityControlAgentsClass()
+
+    def run(self, product_website, product_details, task_output):
+        # Create Agent
+        quality_control_agent = self.agents.quality_control_agent()
+
+        # Create Task
+        quality_assurance_task = self.tasks.quality_assurance(quality_control_agent, product_website, product_details,
+                                                              task_output)
+
+        # Create Crew responsible for Quality Assurance
+        quality_assurance_crew = Crew(
+            agents=[quality_control_agent],
+            tasks=[quality_assurance_task],
+            verbose=True
+        )
+
+        # Run the quality assurance task
+        qa_report = quality_assurance_crew.kickoff()
+        return qa_report
+
+
 if __name__ == "__main__":
     print("## instagramposter Crew")
     print('-------------------------------')
@@ -93,14 +117,17 @@ if __name__ == "__main__":
     product_website = input("What is the product website you want a marketing strategy for?\n")
     product_details = input("Any extra details about the product and or the instagram post you want?\n")
 
-    product_details_global = product_details
-    product_website_global = product_website
-
     copy_crewobj = copy_crew()
     ad_copy = copy_crewobj.run(product_website, product_details)
 
+    qualityassuranceobj_ad_copy = QualityAssuranceCrew()
+    qualityassurance_ad_copy = qualityassuranceobj_ad_copy.run(product_website, product_details, ad_copy)
+
     image_crewobj = image_crew()
     image = image_crewobj.run(ad_copy, product_website, product_details)
+
+    qualityassuranceobj_image = QualityAssuranceCrew()
+    qualityassurance_image = qualityassuranceobj_image.run(product_website, product_details, image)
 
     # Print results
     print("\n\n########################")
@@ -110,3 +137,9 @@ if __name__ == "__main__":
     print(ad_copy)
     print("'\n\nYour midjourney description:")
     print(image)
+    print("############################\n\n")
+    print("\nYour quality assurance report for post:")
+    print(qualityassurance_ad_copy)
+    print("\n\nYour quality assurance report for image:")
+    print(qualityassurance_image)
+    print("\n########################")

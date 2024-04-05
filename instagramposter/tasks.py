@@ -131,3 +131,23 @@ class MarketingAnalysisTasks:
             expected_output="3 reviewed options of photographs with descriptions.",
             agent=agent
         )
+
+
+class quality_assurance_tasks_class:
+    def quality_assurance(self, agent, product_website, product_details, task_output):
+        return Task(
+            description=dedent(
+                f"""Perform a quality assurance check on the task request: make a blog post for a website.
+                the website is {product_website}
+                the further more details are: {product_details}
+                
+                Your job is to ensure that the task has been completed to a high standard.
+                Check for completeness, accuracy, and adherence to the task requirements.
+
+                Your final report should include any issues found and suggestions for improvement.
+                if the output of the task is irrelavant to the task, you should say "TASK FAILED".
+                Here are the output of the task that you are going to check: {task_output}
+                """),
+            expected_output="A detailed QA report on the task or 'TASK FAILED'.",
+            agent=agent
+        )
