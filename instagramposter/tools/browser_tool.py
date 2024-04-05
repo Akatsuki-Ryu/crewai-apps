@@ -8,6 +8,9 @@ from unstructured.partition.html import partition_html
 
 from crewai_tools import ScrapeWebsiteTool
 
+import requests
+from bs4 import BeautifulSoup
+
 
 class BrowserTools():
 
@@ -49,3 +52,24 @@ class BrowserTools():
             summaries.append(summary)
             content = "\n\n".join(summaries)
         return f'\nScrapped Content: {content}\n'
+
+    @tool("Scrape website beautifulsoup")
+    def scrape_website_beautifulsoup(websiteurl):
+        """Scrape the text content of a website using BeautifulSoup. just pass a string with
+        only the full url, no need for a final slash `/`, eg: https://google.com or https://clearbit.com/about-us"""
+        # Send an HTTP request to the URL of the webpage you want to access
+        response = requests.get(websiteurl)
+        print("\n===================target website ====================")
+        print(websiteurl)
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the first <h1> element on the page
+        # h1_element = soup.find("h1")
+
+        # Extract the text content of the webpage
+        text = soup.get_text()
+        print("\n=================== scrapted content from beautifulsoup =====================")
+        print(text)
+        return text
+

@@ -23,6 +23,7 @@ class MarketingAnalysisAgents:
                     online business landscapes."""),
             tools=[
                 BrowserTools.scrape_and_summarize_website,
+                BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.duck_search_tool
 
@@ -42,6 +43,7 @@ class MarketingAnalysisAgents:
                     bespoke strategies that drive success."""),
             tools=[
                 BrowserTools.scrape_and_summarize_website,
+                BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
                 SearchTools.duck_search_tool
@@ -64,6 +66,7 @@ class MarketingAnalysisAgents:
                 attention and inspire action."""),
             tools=[
                 BrowserTools.scrape_and_summarize_website,
+                BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
                 SearchTools.duck_search_tool
@@ -83,6 +86,7 @@ class MarketingAnalysisAgents:
                     important customer and you need to take the most amazing photograph."""),
             tools=[
                 BrowserTools.scrape_and_summarize_website,
+                BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
                 SearchTools.duck_search_tool
@@ -106,6 +110,7 @@ class MarketingAnalysisAgents:
                     content for the customer."""),
             tools=[
                 BrowserTools.scrape_and_summarize_website,
+                BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
                 SearchTools.duck_search_tool
