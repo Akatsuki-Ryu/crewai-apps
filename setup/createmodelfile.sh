@@ -43,12 +43,44 @@ selected_model=${models[choice-1]}
 # Run the script for the selected model
 case "$selected_model" in
     llama2)
+      #if there is a model file called Llama2Modelfile , run the script, otherwise go to setup folder and try again
+        if [ -f "./Llama2Modelfile" ]; then
+            run_model_script "llama2" "crewai-llama2" "./Llama2Modelfile"
+        else
+          cd setup
+          if [ -f "./Llama2Modelfile" ]; then
+            run_model_script "llama2" "crewai-llama2" "./Llama2Modelfile"
+          else
+            echo "Llama2Modelfile not found."
+            exit 1
+          fi
+        fi
         run_model_script "llama2" "crewai-llama2" "./Llama2Modelfile"
         ;;
     mistral)
+      if [ -f "./MistralModelfile" ]; then
         run_model_script "mistral" "crewai-mistral" "./MistralModelfile"
+      else
+        cd setup
+        if [ -f "./MistralModelfile" ]; then
+          run_model_script "mistral" "crewai-mistral" "./MistralModelfile"
+        else
+          echo "MistralModelfile not found."
+          exit 1
+        fi
+      fi
         ;;
     openhermes)
+      if [ -f "./OpenhermesModelfile" ]; then
         run_model_script "openhermes" "crewai-openhermes" "./OpenhermesModelfile"
+      else
+        cd setup
+        if [ -f "./OpenhermesModelfile" ]; then
+          run_model_script "openhermes" "crewai-openhermes" "./OpenhermesModelfile"
+        else
+          echo "OpenhermesModelfile not found."
+          exit 1
+        fi
+      fi
         ;;
 esac

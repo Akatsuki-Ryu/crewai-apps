@@ -38,12 +38,35 @@ def display_model_list():
 
 def choose_model():
     model_list = list_models()
-    print("Choose the model you would like to run:")
+    print("\nChoose the model you would like to run:")
     for i, model in enumerate(model_list):
         print(f"{i + 1}. {model}")
     print("=====================================")
     choice = input("Enter the number of the model you would like to run: ")
     if choice == "":
+        # if there is a model called "crewai-openhermes" in the model list, choose that, otherwise choose "openhermes"
+        if "crewai-openhermes:latest" in model_list:
+            print("No choice made. will choose the default model crewai-openhermes.")
+            os.environ["OPENAI_MODEL_NAME"] = 'crewai-openhermes'
+            return 0
+        else:
+            print("No choice made and crewai model is not initiated. will choose the default model openhermes.")
+            #ask user if they want to run the "createmodelfile.sh" script
+            print("Would you like to run the createmodelfile.sh script to create the crewai-openhermes model?")
+            print("1. Yes")
+            print("2. No")
+            print("=====================================")
+            choice = input("Enter the number of the choice you would like to make: ")
+            if choice == "1":
+                print("Running createmodelfile.sh...")
+                os.system('bash ./setup/createmodelfile.sh')
+                print("Model created. Please restart the program.")
+                exit()
+            elif choice == "2":
+                print("No choice made. will choose the default model openhermes.")
+                os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
+                return 0
+
         print("No choice made. will choose the default model openhermes.")
         os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
         return 0
@@ -61,7 +84,7 @@ def choose_model():
 
 # let user choose which model to run
 def choose_model_hardcode():
-    print("Choose the model you would like to run:")
+    print("\nChoose the model you would like to run:")
     print("1. Openhermes (default)")
     print("2. mistral")
     print("=====================================")
@@ -79,7 +102,7 @@ def choose_model_hardcode():
 
 # let user choose if running from docker or running from local
 def choose_base_url():
-    print("Choose the base URL you would like to run:")
+    print("\nChoose the base URL you would like to run:")
     print("1. docker host (default)")
     print("2. baremetal localhost")
     print("3. docker network")
@@ -103,7 +126,7 @@ def choose_base_url():
 
 # create a menu for user to choose which file to run
 def main():
-    print("Welcome to the AI Crew!")
+    print("\nWelcome to the AI Crew!")
     print("1. Trip Planner")
     print("2. Law Consultant")
     print("3. Research Assistant")
@@ -138,7 +161,7 @@ def main():
 if __name__ == "__main__":
     choose_base_url()
     # list_models()
-    display_model_list()
+    # display_model_list()
     choose_model()
 
     main()
