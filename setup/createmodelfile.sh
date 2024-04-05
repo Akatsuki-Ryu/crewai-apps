@@ -40,47 +40,31 @@ fi
 # Get the selected model name based on the user's choice
 selected_model=${models[choice-1]}
 
-# Run the script for the selected model
+# Function to check the existence of a model file and run the model script
+check_and_run() {
+    model_name=$1
+    file_name=$2
+    if [ -f "./$file_name" ]; then
+        run_model_script "$model_name" "crewai-$model_name" "./$file_name"
+    else
+        cd setup
+        if [ -f "./$file_name" ]; then
+            run_model_script "$model_name" "crewai-$model_name" "./$file_name"
+        else
+            echo "$file_name not found."
+            exit 1
+        fi
+    fi
+}
+
 case "$selected_model" in
     llama2)
-      #if there is a model file called Llama2Modelfile , run the script, otherwise go to setup folder and try again
-        if [ -f "./Llama2Modelfile" ]; then
-            run_model_script "llama2" "crewai-llama2" "./Llama2Modelfile"
-        else
-          cd setup
-          if [ -f "./Llama2Modelfile" ]; then
-            run_model_script "llama2" "crewai-llama2" "./Llama2Modelfile"
-          else
-            echo "Llama2Modelfile not found."
-            exit 1
-          fi
-        fi
-        run_model_script "llama2" "crewai-llama2" "./Llama2Modelfile"
+        check_and_run "llama2" "Llama2Modelfile"
         ;;
     mistral)
-      if [ -f "./MistralModelfile" ]; then
-        run_model_script "mistral" "crewai-mistral" "./MistralModelfile"
-      else
-        cd setup
-        if [ -f "./MistralModelfile" ]; then
-          run_model_script "mistral" "crewai-mistral" "./MistralModelfile"
-        else
-          echo "MistralModelfile not found."
-          exit 1
-        fi
-      fi
+        check_and_run "mistral" "MistralModelfile"
         ;;
     openhermes)
-      if [ -f "./OpenhermesModelfile" ]; then
-        run_model_script "openhermes" "crewai-openhermes" "./OpenhermesModelfile"
-      else
-        cd setup
-        if [ -f "./OpenhermesModelfile" ]; then
-          run_model_script "openhermes" "crewai-openhermes" "./OpenhermesModelfile"
-        else
-          echo "OpenhermesModelfile not found."
-          exit 1
-        fi
-      fi
+        check_and_run "openhermes" "OpenhermesModelfile"
         ;;
 esac
