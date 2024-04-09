@@ -176,8 +176,7 @@ def main():
 
 
 if __name__ == "__main__":
-    print(is_running_in_docker())
-
+    # print(is_running_in_docker())
     choose_base_url()
     # list_models()
     # display_model_list()
