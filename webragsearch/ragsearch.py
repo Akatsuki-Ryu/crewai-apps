@@ -12,9 +12,9 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.tools import DuckDuckGoSearchRun
 
 embedding_function = OpenAIEmbeddings()
+
+
 # llm = ChatOpenAI(model="gpt-3.5-turbo")
-
-
 
 
 # Tool 1 : Save the news articles in a database
@@ -96,12 +96,12 @@ writer_agent = Agent(
 news_search_task = Task(
     description='Search for AI 2024 and create key points for each news.',
     agent=news_search_agent,
-    # tools=[SearchNewsDB().news],
     expect_output='Key points for each news article from the latest news.'
+    # tools=[SearchNewsDB().news],
 )
 
 writer_task = Task(
-    description="""
+    description=f"""
     Go step by step.
     Step 1: Identify all the topics received.
     Step 2: Use the Get News Tool to verify the each topic by going through one by one.
@@ -111,6 +111,7 @@ writer_task = Task(
     """,
     agent=writer_agent,
     context=[news_search_task],
+    expect_output='Summarised information for every topic.',
     tools=[GetNews().news, search_tool]
 )
 
