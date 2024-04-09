@@ -2,3 +2,5 @@
 
 *.pyc
 /db/chroma.sqlite3
+
+chroma_db/
