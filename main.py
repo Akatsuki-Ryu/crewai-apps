@@ -1,7 +1,12 @@
 import os
 
+os.environ["NEWSAPI_KEY"] = 'e916ad44033a4aa0b37b10d2c144529f'
 os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
 os.environ["OPENAI_API_KEY"] = 'sk-111111111111111111111111111111111111111111111111'
+os.environ["OPENAI_API_BASE"] = 'http://llm:11434/v1'
+os.environ["OPENAI_MODEL_NAME"] = 'openhermes'
+
+
 
 import subprocess
 import json
@@ -132,6 +137,7 @@ def main():
     print("3. Research Assistant")
     print("4. File Operations")
     print("5. Instagram Poster")
+    print("6. RAG search")
     print("e. Exit")
     print("=====================================")
     choice = input("Enter the number of the file you would like to run: ")
@@ -150,6 +156,9 @@ def main():
     elif choice == "5":
         print("Running Instagram Poster...")
         os.system('python3 ./instagramposter/instagrampostermain.py')
+    elif choice == "6":
+        print("Running RAG search...")
+        os.system('python3 ./webragsearch/ragsearch.py')
     elif choice == "e":
         print("Exiting...")
         exit()
