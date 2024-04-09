@@ -14,6 +14,10 @@ import json
 base_url = "http://llm:11434/v1"
 
 
+# check if this script is running in docker or not
+def is_running_in_docker():
+    return os.path.exists('/.dockerenv')
+
 def list_models():
     global base_url
     command = f"curl {base_url}/api/tags"
@@ -108,9 +112,9 @@ def choose_model_hardcode():
 # let user choose if running from docker or running from local
 def choose_base_url():
     print("\nChoose the base URL you would like to run:")
-    print("1. docker host (default)")
-    print("2. baremetal localhost")
-    print("3. docker network")
+    print("1. docker host llm (default when running in docker)")
+    print("2. baremetal localhost (default when running locally)")
+    print("3. docker network llm")
     print("=====================================")
     choice = input("Enter the number of the base URL you would like to run: ")
     global base_url
@@ -124,9 +128,13 @@ def choose_base_url():
         base_url = "http://llm:11434"
         os.environ["OPENAI_API_BASE"] = 'http://llm:11434/v1'
     else:
-        print("Invalid choice. will choose to run local")
-        base_url = "http://host.docker.internal:11434"
-        os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
+        print("Invalid choice. will choose the default according to the environment.")
+        if is_running_in_docker():
+            base_url = "http://host.docker.internal:11434"
+            os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
+        else:
+            base_url = "http://localhost:11434"
+            os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
 
 
 # create a menu for user to choose which file to run
@@ -168,6 +176,8 @@ def main():
 
 
 if __name__ == "__main__":
+    print(is_running_in_docker())
+
     choose_base_url()
     # list_models()
     # display_model_list()
