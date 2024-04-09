@@ -35,7 +35,7 @@ RUN poetry install --no-root
 
 COPY . ./
 
-RUN ./setupenv.sh
+RUN #./setupenv.sh
 
 #docker build -t crewai .
 
