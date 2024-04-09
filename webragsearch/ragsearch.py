@@ -96,8 +96,8 @@ writer_agent = Agent(
 news_search_task = Task(
     description='Search for AI 2024 and create key points for each news.',
     agent=news_search_agent,
-    expect_output='Key points for each news article from the latest news.'
-    # tools=[SearchNewsDB().news],
+    expect_output='Key points for each news article from the latest news.',
+    tools=[SearchNewsDB().news]
 )
 
 writer_task = Task(
