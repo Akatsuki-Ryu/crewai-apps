@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03441b7-ec34-4f4b-bb0a-0cde984496cb" name="Changes" comment="create modelfile script logic opt">
+    <list default="true" id="f03441b7-ec34-4f4b-bb0a-0cde984496cb" name="Changes" comment="fix a typo of expected output (copilot s fault)">
+      <change afterPath="$PROJECT_DIR$/webragsearch/agents.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webragsearch/tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webragsearch/tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webragsearch/ragsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/webragsearch/ragsearch.py" afterDir="false" />
     </list>
@@ -16,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="BashSupport Pro Bash" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -308,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712337089597</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix a typo of expected output (copilot s fault)">
+      <option name="closed" value="true" />
+      <created>1712741291697</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1712741291697</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +350,8 @@
     <MESSAGE value="create a list in createmodelfile.sh so user can choose from" />
     <MESSAGE value="add createmodel logic when find there is no crewai model" />
     <MESSAGE value="create modelfile script logic opt" />
-    <option name="LAST_COMMIT_MESSAGE" value="create modelfile script logic opt" />
+    <MESSAGE value="fix a typo of expected output (copilot s fault)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix a typo of expected output (copilot s fault)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/crewai_apps$main.coverage" NAME="main Coverage Results" MODIFIED="1712328695148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
