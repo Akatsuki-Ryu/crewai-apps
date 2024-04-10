@@ -33,6 +33,7 @@ class SearchNewsDBclass:
 
         articles = response.json().get('articles', [])
         print(f"Found {len(articles)} articles.")
+        print(articles)
         all_splits = []
         for article in articles:
             # Assuming WebBaseLoader can handle a list of URLs
@@ -48,14 +49,16 @@ class SearchNewsDBclass:
             vectorstore = Chroma.from_documents(all_splits, embedding=embedding_function,
                                                 persist_directory="./chroma_db")
             retriever = vectorstore.similarity_search(query)
+            print(f"Found {len(retriever)} relevant articles.")
             return retriever
         else:
+            print("No content available for processing.")
             return "No content available for processing."
 
 
 # Tool 2 : Get the news articles from the database
 class GetNewsclass:
-    @tool("Get News Tool")
+    @tool("Get_News_Tool")
     def news(query: str) -> str:
         """Search Chroma DB for relevant news information based on a query."""
         vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embedding_function)
