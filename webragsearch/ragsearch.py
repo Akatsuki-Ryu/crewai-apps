@@ -6,22 +6,33 @@ from tools import SearchNewsDB, GetNews, search_tool
 from agents import NewsAgentsclass
 from tasks import NewsTasksclass
 
-agentsobj = NewsAgentsclass()
-news_search_agent = agentsobj.news_search_agent
-writer_agent = agentsobj.writer_agent
 
-tasksobj = NewsTasksclass(news_search_agent, writer_agent)
-news_search_task = tasksobj.news_search_task
-writer_task = tasksobj.writer_task
+class NewsCrewclass:
+    def __init__(self):
+        self.agentsobj = NewsAgentsclass()
+        self.news_search_agent = self.agentsobj.news_search_agent
+        self.writer_agent = self.agentsobj.writer_agent
 
-# 4. Creating Crew
-news_crew = Crew(
-    agents=[news_search_agent, writer_agent],
-    tasks=[news_search_task, writer_task],
-    process=Process.sequential,
-    # manager_llm=llm
-)
+        self.tasksobj = NewsTasksclass(self.news_search_agent, self.writer_agent)
+        self.news_search_task = self.tasksobj.news_search_task
+        self.writer_task = self.tasksobj.writer_task
 
-# Execute the crew to see RAG in action
-result = news_crew.kickoff()
-print(result)
+    def run(self):
+        crewinst = Crew(
+            agents=[self.news_search_agent, self.writer_agent],
+            tasks=[self.news_search_task, self.writer_task],
+            process=Process.sequential,
+            # manager_llm=llm
+            verbose=True
+        )
+        result = crewinst.kickoff()
+        return result
+
+
+if __name__ == "__main__":
+    print("## RAG Crew")
+    print('-------------------------------')
+    crewobj = NewsCrewclass()
+    news_crew = crewobj.run()
+    # Execute the crew to see RAG in action
+    print(news_crew)
