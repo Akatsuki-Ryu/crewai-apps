@@ -17,7 +17,7 @@ class NewsTasksclass:
             description='Search for xiaomi new car SU7 and create key points for each news.',
             agent=news_search_agent,
             expected_output='Key points for each news article from the latest news.',
-            tools=[SearchNewsDB().news, search_tool, GetNews().news]
+            tools=[SearchNewsDB().news, search_tool]
         )
 
     def create_writer_task(self, writer_agent):
