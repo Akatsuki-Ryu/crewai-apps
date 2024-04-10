@@ -1,13 +1,17 @@
 from crewai import Agent, Task, Crew, Process
-from agents import news_search_agent, writer_agent
+from agents import NewsAgentsclass
 from tools import SearchNewsDB, GetNews, search_tool
+
+agentsobj = NewsAgentsclass()
+news_search_agent = agentsobj.news_search_agent
+writer_agent = agentsobj.writer_agent
 
 # 3. Creating Tasks
 news_search_task = Task(
     description='Search for xiaomi new car SU7 and create key points for each news.',
     agent=news_search_agent,
     expected_output='Key points for each news article from the latest news.',
-    tools=[SearchNewsDB().news]
+    tools=[SearchNewsDB().news, search_tool, GetNews().news]
 )
 
 writer_task = Task(
