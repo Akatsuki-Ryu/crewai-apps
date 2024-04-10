@@ -4,3 +4,7 @@
 /db/chroma.sqlite3
 
 chroma_db/
+
+.idea/workspace.xml
+
+.idea/dataSources.local.xml
