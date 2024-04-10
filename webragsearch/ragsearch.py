@@ -24,6 +24,9 @@ class SearchNewsDB:
         """Fetch news articles and process their contents."""
         API_KEY = os.getenv('NEWSAPI_KEY')  # Fetch API key from environment variable
         base_url = "https://newsapi.org/v2/everything"
+        print(f"Searching for news on query...")
+        print(query)
+
 
         params = {
             'q': query,
@@ -35,9 +38,11 @@ class SearchNewsDB:
 
         response = requests.get(base_url, params=params)
         if response.status_code != 200:
+            print("Failed to retrieve news.")
             return "Failed to retrieve news."
 
         articles = response.json().get('articles', [])
+        print(f"Found {len(articles)} articles.")
         all_splits = []
         for article in articles:
             # Assuming WebBaseLoader can handle a list of URLs
@@ -53,8 +58,11 @@ class SearchNewsDB:
             vectorstore = Chroma.from_documents(all_splits, embedding=embedding_function,
                                                 persist_directory="./chroma_db")
             retriever = vectorstore.similarity_search(query)
+            print(f"Found {len(retriever)} relevant articles.")
+            print(retriever)
             return retriever
         else:
+            print("No content available for processing.")
             return "No content available for processing."
 
 
@@ -74,10 +82,10 @@ search_tool = DuckDuckGoSearchRun()
 # 2. Creating Agents
 news_search_agent = Agent(
     role='News Seacher',
-    goal='Generate key points for each news article from the latest news',
+    goal='Generate key points for each news article from the latest news,',
     backstory='Expert in analysing and generating key points from news content for quick updates.',
     tools=[SearchNewsDB().news],
-    allow_delegation=True,
+    allow_delegation=False,
     verbose=True,
     # llm=llm
 )
@@ -94,7 +102,7 @@ writer_agent = Agent(
 
 # 3. Creating Tasks
 news_search_task = Task(
-    description='Search for AI 2024 and create key points for each news.',
+    description='Search for xiaomi new car SU7 and create key points for each news.',
     agent=news_search_agent,
     expected_output='Key points for each news article from the latest news.',
     tools=[SearchNewsDB().news]
