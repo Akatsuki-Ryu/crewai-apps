@@ -13,15 +13,15 @@ class NewsTasksclass:
         self.news_search_agent = news_search_agentobj
         self.writer_agent = writer_agentobj
 
-    def create_news_search_task(self):
+    def create_news_search_task(self, search_topic):
         return Task(
-            description='Search for AI 2024 and create key points for each news.',
+            description=f'Search for {search_topic} and create key points for each news.',
             agent=self.news_search_agent,
             expected_output='Key points for each news article from the latest news.',
             tools=[SearchNewsDBclass().news]
         )
 
-    def create_writer_task(self):
+    def create_writer_task(self, search_topic):
         return Task(
             description=f"""
             Go step by step.
@@ -32,7 +32,7 @@ class NewsTasksclass:
             Don't skip any topic.
             """,
             agent=self.writer_agent,
-            context=[self.create_news_search_task()],
+            context=[self.create_news_search_task(search_topic)],
             expected_output='Summarised information for every topic.',
             tools=[GetNewsclass().news, search_tool]
         )
