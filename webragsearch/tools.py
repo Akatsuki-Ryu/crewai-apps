@@ -28,9 +28,11 @@ class SearchNewsDBclass:
 
         response = requests.get(base_url, params=params)
         if response.status_code != 200:
+            print(f"Failed to retrieve news. Status code: {response.status_code}")
             return "Failed to retrieve news."
 
         articles = response.json().get('articles', [])
+        print(f"Found {len(articles)} articles.")
         all_splits = []
         for article in articles:
             # Assuming WebBaseLoader can handle a list of URLs
