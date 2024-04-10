@@ -4,11 +4,15 @@ from crewai import Agent, Task, Crew, Process
 
 from tools import SearchNewsDB, GetNews, search_tool
 from agents import NewsAgentsclass
-from tasks import news_search_task, writer_task
+from tasks import NewsTasksclass
 
 agentsobj = NewsAgentsclass()
 news_search_agent = agentsobj.news_search_agent
 writer_agent = agentsobj.writer_agent
+
+tasksobj = NewsTasksclass(news_search_agent, writer_agent)
+news_search_task = tasksobj.news_search_task
+writer_task = tasksobj.writer_task
 
 # 4. Creating Crew
 news_crew = Crew(

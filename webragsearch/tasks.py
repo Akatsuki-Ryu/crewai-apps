@@ -7,24 +7,31 @@ news_search_agent = agentsobj.news_search_agent
 writer_agent = agentsobj.writer_agent
 
 # 3. Creating Tasks
-news_search_task = Task(
-    description='Search for xiaomi new car SU7 and create key points for each news.',
-    agent=news_search_agent,
-    expected_output='Key points for each news article from the latest news.',
-    tools=[SearchNewsDB().news, search_tool, GetNews().news]
-)
+class NewsTasksclass:
+    def __init__(self, news_search_agent, writer_agent):
+        self.news_search_task = self.create_news_search_task(news_search_agent)
+        self.writer_task = self.create_writer_task(writer_agent)
 
-writer_task = Task(
-    description=f"""
-    Go step by step.
-    Step 1: Identify all the topics received.
-    Step 2: Use the Get News Tool to verify the each topic by going through one by one.
-    Step 3: Use the Search tool to search for information on each topic one by one. 
-    Step 4: Go through every topic and write an in-depth summary of the information retrieved.
-    Don't skip any topic.
-    """,
-    agent=writer_agent,
-    context=[news_search_task],
-    expected_output='Show the information for each step and also information of every topic.',
-    tools=[GetNews().news, search_tool]
-)
+    def create_news_search_task(self, news_search_agent):
+        return Task(
+            description='Search for xiaomi new car SU7 and create key points for each news.',
+            agent=news_search_agent,
+            expected_output='Key points for each news article from the latest news.',
+            tools=[SearchNewsDB().news, search_tool, GetNews().news]
+        )
+
+    def create_writer_task(self, writer_agent):
+        return Task(
+            description=f"""
+            Go step by step.
+            Step 1: Identify all the topics received.
+            Step 2: Use the Get News Tool to verify the each topic by going through one by one.
+            Step 3: Use the Search tool to search for information on each topic one by one. 
+            Step 4: Go through every topic and write an in-depth summary of the information retrieved.
+            Don't skip any topic.
+            """,
+            agent=writer_agent,
+            context=[self.news_search_task],
+            expected_output='Show the information for each step and also information of every topic.',
+            tools=[GetNews().news, search_tool]
+        )
