@@ -5,13 +5,13 @@ from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.tools import DuckDuckGoSearchRun
 
-
 from langchain_openai import OpenAIEmbeddings
+
 embedding_function = OpenAIEmbeddings()
 
 
 # Tool 1 : Save the news articles in a database
-class SearchNewsDB:
+class SearchNewsDBclass:
     @tool("News DB Tool")
     def news(query: str):
         """Fetch news articles and process their contents."""
@@ -52,7 +52,7 @@ class SearchNewsDB:
 
 
 # Tool 2 : Get the news articles from the database
-class GetNews:
+class GetNewsclass:
     @tool("Get News Tool")
     def news(query: str) -> str:
         """Search Chroma DB for relevant news information based on a query."""

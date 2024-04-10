@@ -1,14 +1,14 @@
 from crewai import Agent, Task, Crew, Process
-from agents import NewsAgents
-from tools import search_tool, SearchNewsDB, GetNews
+from agents import NewsAgentsclass
+from tools import search_tool, SearchNewsDBclass, GetNewsclass
 
-agentsobj = NewsAgents()
+agentsobj = NewsAgentsclass()
 news_search_agentobj = agentsobj.news_search_agent
 writer_agentobj = agentsobj.writer_agent
 
 
 # 3. Creating Tasks
-class NewsTasks:
+class NewsTasksclass:
     def __init__(self, news_search_agent, writer_agent):
         self.news_search_agent = news_search_agentobj
         self.writer_agent = writer_agentobj
@@ -18,7 +18,7 @@ class NewsTasks:
             description='Search for AI 2024 and create key points for each news.',
             agent=self.news_search_agent,
             expected_output='Key points for each news article from the latest news.',
-            tools=[SearchNewsDB().news]
+            tools=[SearchNewsDBclass().news]
         )
 
     def create_writer_task(self):
@@ -34,5 +34,5 @@ class NewsTasks:
             agent=self.writer_agent,
             context=[self.create_news_search_task()],
             expected_output='Summarised information for every topic.',
-            tools=[GetNews().news, search_tool]
+            tools=[GetNewsclass().news, search_tool]
         )

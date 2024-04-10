@@ -4,14 +4,14 @@ from crewai import Agent, Task, Crew, Process
 from langchain_openai import ChatOpenAI
 from langchain_core.retrievers import BaseRetriever
 
-from agents import NewsAgents
-from tasks import NewsTasks
+from agents import NewsAgentsclass
+from tasks import NewsTasksclass
 
-agentsobj = NewsAgents()
+agentsobj = NewsAgentsclass()
 news_search_agentobj = agentsobj.news_search_agent
 writer_agentobj = agentsobj.writer_agent
 
-tasksobj = NewsTasks(news_search_agentobj, writer_agentobj)
+tasksobj = NewsTasksclass(news_search_agentobj, writer_agentobj)
 
 news_search_taskobj = tasksobj.create_news_search_task()
 writer_taskobj = tasksobj.create_writer_task()

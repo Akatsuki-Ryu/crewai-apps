@@ -1,12 +1,12 @@
 
 from crewai import Agent, Task, Crew, Process
-from tools import search_tool, SearchNewsDB, GetNews
+from tools import search_tool, SearchNewsDBclass, GetNewsclass
 
 
 # llm = ChatOpenAI(model="gpt-3.5-turbo")
 
 # 2. Creating Agents
-class NewsAgents:
+class NewsAgentsclass:
     def __init__(self):
         self.news_search_agent = self.create_news_search_agent()
         self.writer_agent = self.create_writer_agent()
@@ -16,7 +16,7 @@ class NewsAgents:
             role='News Seacher',
             goal='Generate key points for each news article from the latest news',
             backstory='Expert in analysing and generating key points from news content for quick updates.',
-            tools=[SearchNewsDB().news],
+            tools=[SearchNewsDBclass().news],
             allow_delegation=True,
             verbose=True,
             # llm=llm
@@ -27,7 +27,7 @@ class NewsAgents:
             role='Writer',
             goal='Identify all the topics received. Use the Get News Tool to verify the each topic to search. Use the Search tool for detailed exploration of each topic. Summarise the retrieved information in depth for every topic.',
             backstory='Expert in crafting engaging narratives from complex information.',
-            tools=[GetNews().news, search_tool],
+            tools=[GetNewsclass().news, search_tool],
             allow_delegation=True,
             verbose=True,
             # llm=llm
