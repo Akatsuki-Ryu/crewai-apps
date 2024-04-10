@@ -4,6 +4,10 @@ import requests, os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_core.retrievers import BaseRetriever
+
+from langchain_openai import OpenAIEmbeddings
+embedding_function = OpenAIEmbeddings()
 
 # Tool 1 : Save the news articles in a database
 class SearchNewsDB:
