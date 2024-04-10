@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03441b7-ec34-4f4b-bb0a-0cde984496cb" name="Changes" comment="fix a typo of expected output (copilot s fault)">
-      <change afterPath="$PROJECT_DIR$/webragsearch/agents.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webragsearch/tasks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webragsearch/tools.py" afterDir="false" />
+    <list default="true" id="f03441b7-ec34-4f4b-bb0a-0cde984496cb" name="Changes" comment="create file structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webragsearch/agents.py" beforeDir="false" afterPath="$PROJECT_DIR$/webragsearch/agents.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webragsearch/ragsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/webragsearch/ragsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webragsearch/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/webragsearch/tasks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,14 +318,21 @@
       <option name="project" value="LOCAL" />
       <updated>1712741291697</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="create file structure">
+      <option name="closed" value="true" />
+      <created>1712741809173</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1712741809173</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add instagram poster" />
     <MESSAGE value="opt code , clean up llm settings" />
     <MESSAGE value="add browseless in docker composer" />
     <MESSAGE value="add dependencies in docker for instagram poster crew" />
@@ -351,7 +357,8 @@
     <MESSAGE value="add createmodel logic when find there is no crewai model" />
     <MESSAGE value="create modelfile script logic opt" />
     <MESSAGE value="fix a typo of expected output (copilot s fault)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix a typo of expected output (copilot s fault)" />
+    <MESSAGE value="create file structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="create file structure" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/crewai_apps$main.coverage" NAME="main Coverage Results" MODIFIED="1712328695148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
