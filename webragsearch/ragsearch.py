@@ -54,7 +54,7 @@ if __name__ == "__main__":
     search_topic = input("Enter the search topic: ")
     # if there is no imput , setup a default search topic
     if search_topic == "":
-        search_topic = "Xiaomi's new car"
+        search_topic = "Xiaomi new car SU7"
     # define a crew object
     news_crew_obj = NewsCrew(search_topic)
     # Get your crew to work!
