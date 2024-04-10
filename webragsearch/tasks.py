@@ -6,15 +6,16 @@ agentsobj = NewsAgentsclass()
 news_search_agent = agentsobj.news_search_agent
 writer_agent = agentsobj.writer_agent
 
+
 # 3. Creating Tasks
 class NewsTasksclass:
-    def __init__(self, news_search_agent, writer_agent):
-        self.news_search_task = self.create_news_search_task(news_search_agent)
+    def __init__(self, search_topic, news_search_agent, writer_agent):
+        self.news_search_task = self.create_news_search_task(search_topic, news_search_agent)
         self.writer_task = self.create_writer_task(writer_agent)
 
-    def create_news_search_task(self, news_search_agent):
+    def create_news_search_task(self, search_topic, news_search_agent):
         return Task(
-            description='Search for xiaomi new car SU7 and create key points for each news.',
+            description=f'Search for {search_topic} and create key points for each news.',
             agent=news_search_agent,
             expected_output='Key points for each news article from the latest news.',
             tools=[SearchNewsDB().news, search_tool]
