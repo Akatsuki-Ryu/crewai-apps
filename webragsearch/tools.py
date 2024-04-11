@@ -8,6 +8,10 @@ from langchain_core.retrievers import BaseRetriever
 
 from langchain_openai import OpenAIEmbeddings
 embedding_function = OpenAIEmbeddings()
+from langchain_community.embeddings import OllamaEmbeddings
+# embeddings = OllamaEmbeddings()
+embeddings = OllamaEmbeddings(model=os.environ["OPENAI_MODEL_NAME"])
+
 
 # Tool 1 : Save the news articles in a database
 class SearchNewsDB:
@@ -16,8 +20,7 @@ class SearchNewsDB:
         """Fetch news articles and process their contents."""
         API_KEY = os.getenv('NEWSAPI_KEY')  # Fetch API key from environment variable
         base_url = "https://newsapi.org/v2/everything"
-        print(f"Searching for news on query...")
-        print(query)
+        print(f"Searching for news on query...", query)
 
 
         params = {
@@ -40,6 +43,8 @@ class SearchNewsDB:
             # Assuming WebBaseLoader can handle a list of URLs
             loader = WebBaseLoader(article['url'])
             docs = loader.load()
+            print(f"Loaded {len(docs)} documents from {article['url']}.")
+            # print(docs)
 
             text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
             splits = text_splitter.split_documents(docs)
@@ -47,11 +52,11 @@ class SearchNewsDB:
 
         # Index the accumulated content splits if there are any
         if all_splits:
-            vectorstore = Chroma.from_documents(all_splits, embedding=embedding_function,
+            vectorstore = Chroma.from_documents(all_splits, embedding=embeddings,
                                                 persist_directory="./chroma_db")
             retriever = vectorstore.similarity_search(query)
             print(f"Found {len(retriever)} relevant articles.")
-            print(retriever)
+            # print(retriever)
             return retriever
         else:
             print("No content available for processing.")
@@ -63,7 +68,7 @@ class GetNews:
     @tool("Get News Tool")
     def news(query: str) -> str:
         """Search Chroma DB for relevant news information based on a query."""
-        vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embedding_function)
+        vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddings)
         retriever = vectorstore.similarity_search(query)
         return retriever
 
