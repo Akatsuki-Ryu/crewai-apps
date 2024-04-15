@@ -70,6 +70,8 @@ class GetNews:
         """Search Chroma DB for relevant news information based on a query."""
         vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddings)
         retriever = vectorstore.similarity_search(query)
+        print(f"FROM DATABASE Found {len(retriever)} relevant articles. about {query}")
+        print(retriever)
         return retriever
 
 
