@@ -14,7 +14,7 @@ run_model_script() {
 }
 
 # List of available models
-models=("llama2" "mistral" "openhermes")
+models=("llama2" "mistral" "openhermes" "llama3" "wizardlm2")
 
 # Display available models for the user to choose
 echo "Available models:"
@@ -66,5 +66,11 @@ case "$selected_model" in
         ;;
     openhermes)
         check_and_run "openhermes" "OpenhermesModelfile"
+        ;;
+    llama3)
+        check_and_run "llama3" "Llama3Modelfile"
+        ;;
+    wizardlm2)
+        check_and_run "wizardlm2" "WizardLM2Modelfile"
         ;;
 esac
