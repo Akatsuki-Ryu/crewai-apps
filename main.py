@@ -115,6 +115,7 @@ def choose_base_url():
     print("1. docker host llm (default when running in docker)")
     print("2. baremetal localhost (default when running locally)")
     print("3. docker network llm")
+    print("4. baremetal lm studio")
     print("=====================================")
     choice = input("Enter the number of the base URL you would like to run: ")
     global base_url
@@ -127,6 +128,9 @@ def choose_base_url():
     elif choice == "3":
         base_url = "http://llm:11434"
         os.environ["OPENAI_API_BASE"] = 'http://llm:11434/v1'
+    elif choice == "4":
+        base_url = "http://localhost:1234"
+        os.environ["OPENAI_API_BASE"] = 'http://localhost:1234/v1'
     else:
         print("Invalid choice. will choose the default according to the environment.")
         if is_running_in_docker():
@@ -135,6 +139,8 @@ def choose_base_url():
         else:
             base_url = "http://localhost:11434"
             os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+    if choice == "1" or choice == "2" or choice == "3":
+        choose_model()
 
 
 # create a menu for user to choose which file to run
@@ -180,6 +186,6 @@ if __name__ == "__main__":
     choose_base_url()
     # list_models()
     # display_model_list()
-    choose_model()
+    # choose_model()
 
     main()
