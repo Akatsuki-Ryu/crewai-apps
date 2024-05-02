@@ -15,10 +15,11 @@ class NewsTasksclass:
 
     def create_news_search_task(self, search_topic, news_search_agent):
         return Task(
-            description=f'Search for {search_topic} and create key points for each news.',
+            description=f'Search for {search_topic} and create key points for each news. make sure to check with human if the collected key points are correct.',
             agent=news_search_agent,
             expected_output='Key points for each news article from the latest news.',
-            tools=[SearchNewsDB().news, search_tool]
+            tools=[SearchNewsDB().news, search_tool],
+            human_input=True
         )
 
     def create_writer_task(self, writer_agent):
@@ -34,5 +35,6 @@ class NewsTasksclass:
             agent=writer_agent,
             context=[self.news_search_task],
             expected_output='Show the information for each step and also information of every topic.',
-            tools=[GetNews().news, search_tool]
+            tools=[GetNews().news, search_tool],
+            human_input=True
         )

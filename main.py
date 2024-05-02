@@ -140,7 +140,7 @@ def choose_base_url():
             base_url = "http://localhost:11434"
             os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
     if choice == "1" or choice == "2" or choice == "3":
-        choose_model()
+         choose_model()
 
 
 # create a menu for user to choose which file to run
