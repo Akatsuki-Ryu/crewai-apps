@@ -136,9 +136,11 @@ def choose_base_url():
         if is_running_in_docker():
             base_url = "http://host.docker.internal:11434"
             os.environ["OPENAI_API_BASE"] = 'http://host.docker.internal:11434/v1'
+            print("Running in docker. base url" + base_url)
         else:
             base_url = "http://localhost:11434"
             os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
+            print("Running locally. base url" + base_url)
     if choice == "1" or choice == "2" or choice == "3":
          choose_model()
 
