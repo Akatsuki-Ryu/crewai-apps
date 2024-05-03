@@ -15,7 +15,7 @@ class NewsTasksclass:
 
     def create_news_search_task(self, search_topic, news_search_agent):
         return Task(
-            description=f'Search for {search_topic} and create key points for each news. make sure to check with human if the collected key points are correct.',
+            description=f'Search for {search_topic} and create key points for each news. make sure to check with human if the collected key points are correct, if not then search again.',
             agent=news_search_agent,
             expected_output='Key points for each news article from the latest news.',
             tools=[SearchNewsDB().news, search_tool],
@@ -31,6 +31,7 @@ class NewsTasksclass:
             Step 3: Use the Search tool to search for information on each topic one by one. 
             Step 4: Go through every topic and write an in-depth summary of the information retrieved.
             Don't skip any topic.
+            make sure to check with human if the steps outcomes are correct.
             """,
             agent=writer_agent,
             context=[self.news_search_task],
