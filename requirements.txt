@@ -156,7 +156,7 @@ sympy==1.12
 tenacity==8.2.3
 tiktoken==0.5.2
 tokenizers==0.19.1
-tqdm==4.66.2
+tqdm==4.66.3
 trio==0.25.0
 trio-websocket==0.11.1
 typer==0.9.4
