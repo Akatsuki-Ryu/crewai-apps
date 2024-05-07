@@ -2,7 +2,7 @@ import os
 from textwrap import dedent
 from crewai import Agent
 
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 
 from tools.browser_tool import BrowserTools
 from tools.search_tool import SearchTools

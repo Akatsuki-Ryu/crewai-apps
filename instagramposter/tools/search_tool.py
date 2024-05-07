@@ -4,7 +4,8 @@ import os
 import requests
 from langchain.tools import tool
 
-from langchain.tools import DuckDuckGoSearchRun
+from langchain_community.tools import DuckDuckGoSearchRun
+
 
 
 class SearchTools():
