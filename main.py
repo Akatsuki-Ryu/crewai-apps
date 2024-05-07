@@ -150,7 +150,7 @@ def main():
     print("\nWelcome to the AI Crew!")
     print("1. Trip Planner")
     print("2. Serper search")
-    print("3. Research Assistant")
+    print("3. Duckduckgo Research Assistant")
     print("4. File Operations")
     print("5. Instagram Poster")
     print("6. RAG search")
@@ -164,7 +164,7 @@ def main():
         print("Running serper search crew...")
         os.system('python3 ./websearchtoolbox/serpersearchtoolbox.py')
     elif choice == "3":
-        print("Running Research Assistant...")
+        print("Running Duckduckgo Research Assistant...")
         os.system('python3 ./websearch/websearch.py')
     elif choice == "4":
         print("Running File Operations...")
