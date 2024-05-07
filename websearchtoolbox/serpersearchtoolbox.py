@@ -10,7 +10,7 @@ from langchain_community.llms import Ollama
 # base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
 # base_url = os.getenv("OPENAI_API_BASE")
 
-os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
+# os.environ["SERPER_API_KEY"] = 'c7a06bdaa06e509b2116cb12ddb60fb773c9693f'
 
 
 # Initialize the Ollama model with the specified model and base URL
@@ -52,7 +52,7 @@ class websearchcrewclass:
 # result = crew.kickoff(inputs={'topic': 'LGPD'})
 
 if __name__ == "__main__":
-    print("## websearch Crew using toolbox")
+    print("## websearch Crew using serper toolbox")
     print('-------------------------------')
     # user input a task definition
     search_topic = input("Enter the search topic: ")
