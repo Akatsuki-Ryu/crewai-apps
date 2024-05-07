@@ -15,7 +15,7 @@ embeddings = OllamaEmbeddings(model=os.environ["OPENAI_MODEL_NAME"])
 
 # Tool 1 : Save the news articles in a database
 class SearchNewsDB:
-    @tool("News DB Tool")
+    @tool("fetch news")
     def news(query: str):
         """Fetch news articles and process their contents."""
         API_KEY = os.getenv('NEWSAPI_KEY')  # Fetch API key from environment variable
@@ -65,7 +65,7 @@ class SearchNewsDB:
 
 # Tool 2 : Get the news articles from the database
 class GetNews:
-    @tool("Get News Tool")
+    @tool("get News from chroma DB")
     def news(query: str) -> str:
         """Search Chroma DB for relevant news information based on a query."""
         vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddings)
