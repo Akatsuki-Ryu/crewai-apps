@@ -2,7 +2,7 @@ import json
 import os
 
 import requests
-from langchain.tools import tool
+from langchain_community.tools import tool
 
 from langchain_community.tools import DuckDuckGoSearchRun
 

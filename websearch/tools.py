@@ -1,6 +1,5 @@
 from crewai_tools import SerperDevTool
 
-# from langchain.tools import DuckDuckGoSearchRun
 from langchain_community.tools import DuckDuckGoSearchRun
 
 from crewai_tools import tool

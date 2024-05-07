@@ -1,4 +1,4 @@
-from langchain.tools import tool
+from langchain_community.tools import tool
 from langchain_community.document_loaders import WebBaseLoader
 import requests, os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
