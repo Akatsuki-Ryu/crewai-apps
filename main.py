@@ -152,7 +152,7 @@ def main():
     print("2. Serper search")
     print("3. Duckduckgo Research Assistant")
     print("4. File Operations")
-    print("5. Scrape website using browserless and make Instagram Poster, picture prompts")
+    print("5. Scrape website using browserless , then serper search its competitor, make Instagram Poster, picture prompts")
     print("6. search and store data in chromadb and summarize the data")
     print("e. Exit")
     print("=====================================")
