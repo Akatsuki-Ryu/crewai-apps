@@ -24,6 +24,7 @@ pip install 'crewai[tools]'
 # pip install duckduckgo-search
 pip install -U duckduckgo-search
 pip install -U langchain-community
+pip install unstructured
 
 
 
