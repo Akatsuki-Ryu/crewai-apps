@@ -148,7 +148,6 @@ def choose_base_url():
 # create a menu for user to choose which file to run
 def main():
     print("\nWelcome to the AI Crew!")
-    print("1. Trip Planner")
     print("2. Serper search")
     print("3. Duckduckgo Research Assistant")
     print("4. File Operations")
@@ -158,8 +157,9 @@ def main():
     print("=====================================")
     choice = input("Enter the number of the file you would like to run: ")
     if choice == "1":
-        print("Running Trip Planner...(this is not working)")
-        os.system('python3 trip_planner.py')
+        print("invalid option(this is not working)")
+        main()
+        # os.system('python3 trip_planner.py')
     elif choice == "2":
         print("Running serper search crew...")
         os.system('python3 ./websearchtoolbox/serpersearchtoolbox.py')
