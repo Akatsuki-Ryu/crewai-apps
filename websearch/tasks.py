@@ -33,3 +33,20 @@ class websearchtasksclass:
             expected_output="Full blog post of at least 4 paragraphs,approx 500 words.",
             agent=agent,
         )
+
+
+class quality_assurance_tasks_class:
+    def quality_assurance_task(self, agent, search_topic, search_output):
+        return Task(
+            description=dedent(
+                f"""
+                Verify the accuracy and quality of the content for the search output.
+                Ensure that the search topic aligns with the search output.
+                search topic:{search_topic}.
+                search output:{search_output}.
+            """
+            ),
+            expected_output="Quality assurance report, if the search topic does not match the search output, provide feedback.",
+            agent=agent,
+            # task_output=task_output
+        )

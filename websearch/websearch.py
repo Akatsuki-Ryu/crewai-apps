@@ -5,6 +5,9 @@ from tools import search_tool
 from agents import websearchagentsclass
 from tasks import websearchtasksclass
 
+from agents import qualityverifyagentclass
+from tasks import quality_assurance_tasks_class
+
 
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 # os.environ["SERPER_API_KEY"] = "Your Key" # serper.dev API key
@@ -59,6 +62,34 @@ class websearchcrew:
         return result
 
 
+class quality_verify_crew:
+    def run(self, search_topic, search_output):
+        # Define your custom agents and tasks here
+        agents = qualityverifyagentclass()
+        tasks = quality_assurance_tasks_class()
+
+        # Define your custom agents and tasks here
+        quality_verify_agent_local = agents.quality_verify_agent()
+
+        # Custom tasks include agent name and variables as input
+        task1_local = tasks.quality_assurance_task(
+            quality_verify_agent_local,
+            search_topic,
+            search_output
+        )
+
+        # Define your custom crew here
+        crew = Crew(
+            agents=[quality_verify_agent_local],
+            tasks=[task1_local],
+            verbose=True,
+            # verbose=2,  # You can set it to 1 or 2 to different logging levels
+        )
+
+        result = crew.kickoff()
+        return result
+
+
 if __name__ == "__main__":
     print("## websearch Crew")
     print('-------------------------------')
@@ -70,5 +101,10 @@ if __name__ == "__main__":
     # Get your crew to work!
     result = crewobj.run()
 
+    qacrewobj = quality_verify_crew()
+    qaresult = qacrewobj.run(search_topic, result)
+
     print("###################### result ######################")
     print(result)
+    print("###################### qa result ######################")
+    print(qaresult)

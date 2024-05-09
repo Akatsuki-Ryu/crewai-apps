@@ -44,3 +44,14 @@ class websearchagentsclass:
             # tools=[tool_1, tool_2],
             # llm=self.OpenAIGPT35,
         )
+
+class qualityverifyagentclass:
+    def quality_verify_agent(self):
+        return Agent(
+            role='Quality Assurance Specialist',
+            goal='Ensure the accuracy and quality of the content',
+            backstory="""You are a meticulous Quality Assurance Specialist with an eye for detail.
+  Your role is to verify the accuracy of research topic and the output result.""",
+            verbose=True,
+            allow_delegation=False
+        )
