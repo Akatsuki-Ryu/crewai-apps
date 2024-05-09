@@ -152,7 +152,7 @@ def main():
     print("3. Duckduckgo Research Assistant")
     print("4. File Operations")
     print("5. Instagram post crew, Scrape website using browserless , then serper search its competitor, make Instagram Poster, picture prompts")
-    print("6. search and store data in chromadb and summarize the data")
+    print("6. news search and store data in chromadb and summarize the data")
     print("e. Exit")
     print("=====================================")
     choice = input("Enter the number of the file you would like to run: ")
