@@ -2,7 +2,6 @@
 
 from crewai import Agent, Task, Crew, Process
 
-from tools import SearchNewsDB, GetNews, search_tool
 from agents import NewsAgentsclass
 from tasks import NewsTasksclass
 
