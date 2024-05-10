@@ -22,7 +22,7 @@ pip install crewai==0.28.8
 pip install crewai_tools
 pip install 'crewai[tools]'
 # pip install duckduckgo-search
-pip install -U duckduckgo-search
+pip install -U duckduckgo-search==5.3.1
 pip install -U langchain-community
 pip install unstructured
 
