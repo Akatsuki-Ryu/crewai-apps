@@ -149,7 +149,7 @@ def choose_base_url():
 def main():
     print("\nWelcome to the AI Crew!")
     print("2. Serper search")
-    print("3. Duckduckgo Research Assistant")
+    print("3. Duckduckgo Research Assistant (having ratelimit issue)")
     print("4. File Operations")
     print("5. Instagram post crew, Scrape website using browserless , then serper search its competitor, make Instagram Poster, picture prompts")
     print("6. news search and store data in chromadb and summarize the data")
