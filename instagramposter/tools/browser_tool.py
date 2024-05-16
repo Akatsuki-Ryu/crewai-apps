@@ -1,4 +1,5 @@
 import json
+import os
 
 import requests
 from crewai import Agent, Task
@@ -11,6 +12,8 @@ from crewai_tools import ScrapeWebsiteTool
 import requests
 from bs4 import BeautifulSoup
 
+def is_running_in_docker():
+    return os.path.exists('/.dockerenv')
 
 class BrowserTools():
 
@@ -19,9 +22,15 @@ class BrowserTools():
         """Useful to scrape and summarize a website content, just pass a string with
         only the full url, no need for a final slash `/`, eg: https://google.com or https://clearbit.com/about-us"""
 
+        # if this code is running in a docker container, the url should be the name of the service
+        if is_running_in_docker():
+            serviceurl = f"http://browserless_chromium:3000/content" # running browserless through docker network
+            print("=== the script is running in docker, calling browserless_chromium in docker network ===")
+        else:
+            serviceurl = f"http://localhost:3000/content" # running browserless locally
+            print("=== the script is running locally, calling browserless_chromium locally ===")
+
         # url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
-        # serviceurl = f"http://localhost:3000/content" # running browserless locally
-        serviceurl = f"http://browserless_chromium:3000/content" # running browserless through docker network
         print("\n===================target website ====================")
         print(websiteurl)
         payload = json.dumps({"url": websiteurl})
