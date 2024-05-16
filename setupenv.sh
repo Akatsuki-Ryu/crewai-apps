@@ -18,7 +18,7 @@
 curl -sSL https://install.python-poetry.org | python3 -
 
 # install the required packages
-pip install crewai==0.28.8
+pip install crewai==0.30.8
 pip install crewai_tools
 pip install 'crewai[tools]'
 # pip install duckduckgo-search
