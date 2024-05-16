@@ -25,7 +25,7 @@ class MarketingAnalysisAgents:
                 BrowserTools.scrape_and_summarize_website,
                 BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
-                SearchTools.duck_search_tool
+                # SearchTools.duck_search_tool
 
             ],
             allow_delegation=False,
@@ -46,7 +46,7 @@ class MarketingAnalysisAgents:
                 BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
-                SearchTools.duck_search_tool
+                # SearchTools.duck_search_tool
             ],
             # llm=self.llm,
             verbose=True
@@ -69,7 +69,7 @@ class MarketingAnalysisAgents:
                 BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
-                SearchTools.duck_search_tool
+                # SearchTools.duck_search_tool
             ],
             # llm=self.llm,
             verbose=True
@@ -89,7 +89,7 @@ class MarketingAnalysisAgents:
                 BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
-                SearchTools.duck_search_tool
+                # SearchTools.duck_search_tool
 
             ],
             # llm=self.llm,
@@ -113,7 +113,7 @@ class MarketingAnalysisAgents:
                 BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
-                SearchTools.duck_search_tool
+                # SearchTools.duck_search_tool
 
             ],
             # llm=self.llm,
@@ -139,7 +139,7 @@ class QualityControlAgentsClass:
                 BrowserTools.scrape_website_beautifulsoup,
                 SearchTools.search_internet,
                 SearchTools.search_instagram,
-                SearchTools.duck_search_tool
+                # SearchTools.duck_search_tool
             ],
             # llm=self.llm,
             verbose=True
